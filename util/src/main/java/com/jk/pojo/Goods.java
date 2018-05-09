@@ -32,6 +32,16 @@ public class Goods {
     @Column(name = "goodsDiscounts")
     private String goodsDiscounts;
 
+    @Column(name = "goodsAuditState")
+    private Integer goodsAuditState;
+
+    public Integer getGoodsAuditState() {
+        return goodsAuditState;
+    }
+
+    public void setGoodsAuditState(Integer goodsAuditState) {
+        this.goodsAuditState = goodsAuditState;
+    }
 
     @Override
     public String toString() {
@@ -44,6 +54,7 @@ public class Goods {
                 ", goodsimg='" + goodsimg + '\'' +
                 ", goodsPrice='" + goodsPrice + '\'' +
                 ", goodsDiscounts='" + goodsDiscounts + '\'' +
+                ", goodsAuditState=" + goodsAuditState +
                 '}';
     }
 
