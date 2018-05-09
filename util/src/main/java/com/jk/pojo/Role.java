@@ -36,4 +36,5 @@ public class Role {
     public void setRolename(String rolename) {
         this.rolename = rolename;
     }
+    /*pull?*/
 }

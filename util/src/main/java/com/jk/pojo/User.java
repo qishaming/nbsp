@@ -70,4 +70,6 @@ public class User {
     public void setMerchantId(Integer merchantId) {
         this.merchantId = merchantId;
     }
+
+    /*pull?*/
 }
