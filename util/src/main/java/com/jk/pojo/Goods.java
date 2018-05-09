@@ -9,7 +9,7 @@ public class Goods {
     @Id
     @Column(name = "goodsid")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer id;
+    private  Integer goodsid;
 
     @Column(name = "goodsname")
     private String goodsname;
@@ -35,35 +35,12 @@ public class Goods {
     @Column(name = "goodsAuditState")
     private Integer goodsAuditState;
 
-    public Integer getGoodsAuditState() {
-        return goodsAuditState;
+    public Integer getGoodsid() {
+        return goodsid;
     }
 
-    public void setGoodsAuditState(Integer goodsAuditState) {
-        this.goodsAuditState = goodsAuditState;
-    }
-
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "id=" + id +
-                ", goodsname='" + goodsname + '\'' +
-                ", typeid=" + typeid +
-                ", brandId=" + brandId +
-                ", sizeId=" + sizeId +
-                ", goodsimg='" + goodsimg + '\'' +
-                ", goodsPrice='" + goodsPrice + '\'' +
-                ", goodsDiscounts='" + goodsDiscounts + '\'' +
-                ", goodsAuditState=" + goodsAuditState +
-                '}';
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public void setGoodsid(Integer goodsid) {
+        this.goodsid = goodsid;
     }
 
     public String getGoodsname() {
@@ -120,5 +97,28 @@ public class Goods {
 
     public void setGoodsDiscounts(String goodsDiscounts) {
         this.goodsDiscounts = goodsDiscounts;
+    }
+
+    public Integer getGoodsAuditState() {
+        return goodsAuditState;
+    }
+
+    public void setGoodsAuditState(Integer goodsAuditState) {
+        this.goodsAuditState = goodsAuditState;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "goodsid=" + goodsid +
+                ", goodsname='" + goodsname + '\'' +
+                ", typeid=" + typeid +
+                ", brandId=" + brandId +
+                ", sizeId=" + sizeId +
+                ", goodsimg='" + goodsimg + '\'' +
+                ", goodsPrice='" + goodsPrice + '\'' +
+                ", goodsDiscounts='" + goodsDiscounts + '\'' +
+                ", goodsAuditState=" + goodsAuditState +
+                '}';
     }
 }
