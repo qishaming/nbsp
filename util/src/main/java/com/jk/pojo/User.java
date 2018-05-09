@@ -3,17 +3,33 @@ package com.jk.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "pyg_user")
 public class User {
 
     @Id
-    @Column(name = "u_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer id;
-    @Column(name = "u_username")
+    @Column(name = "username")
     private String username;
-    @Column(name = "u_password")
-    private String password;
+    @Column(name = "userPassword")
+    private String userPassword;
+    @Column(name = "customerId")
+    private Integer customerId;
+    @Column(name = "merchantId")
+    private Integer merchantId;
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", customerId=" + customerId +
+                ", merchantId=" + merchantId +
+                '}';
+    }
 
     public Integer getId() {
         return id;
@@ -31,20 +47,27 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
     }
 }
