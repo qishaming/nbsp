@@ -2,7 +2,6 @@ package com.jk.dao.impl;
 
 import com.jk.dao.GoodsDao;
 
-import com.jk.pojo.Type;
 import org.hibernate.SessionBuilder;
 import org.hibernate.SessionFactory;
 import java.util.List;

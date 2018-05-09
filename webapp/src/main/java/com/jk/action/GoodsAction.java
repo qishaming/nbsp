@@ -2,7 +2,6 @@ package com.jk.action;
 
 
 
-import com.jk.pojo.Type;
 import com.jk.service.GoodsService;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -19,8 +18,9 @@ import java.util.List;
 @Namespace(value="/goods")
 @ParentPackage("struts-default")
 public class GoodsAction extends BaseAction {
-/*   @Autowired
+ @Autowired
     private GoodsService goodsService;
+   /*
     private Goods goods=new Goods();
      private  Integer goodsid;
     private Gg gg=new Gg();
