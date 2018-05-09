@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>商家后台</title>
+    <title>运营商管理后台</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="css/fullcalendar.css" />
@@ -45,29 +45,27 @@
 </div>-->
 <!--close-top-Header-menu-->
 
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i>商家管理</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i></a>
     <ul>
-        <li class="active"><i class="icon icon-home"></i> <span>商品管理</span></a>
+        <li class="active"><i class="icon icon-home"></i> <span>商家管理</span></a>
             <ul>
-                <li><a href="show.jsp">商品录入</a></li>
-                <li><a href="show.jsp">商品管理</a></li>
+                <li><a href="show.jsp">审核商家</a></li>
+                <li><a href="show.jsp">商家信息</a></li>
             </ul>
         </li>
-        <li> <a href="#"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
-        <li> <i class="icon icon-edit"></i> <span>基本信息管理</span></a>
+        <li> <a href="#"><i class="icon icon-edit"></i> <span>商品基本数据管理</span></a> </li>
+        <%--<li> <i class="icon icon-inbox"></i> <span>基本信息管理</span></a>
             <ul>
                 <li><a href="show.jsp">修改资料</a></li>
                 <li><a href="show.jsp">修改密码</a></li>
             </ul>
+        </li>--%>
+        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>分类管理</span></a>
         </li>
-        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>财务状况</span></a>
-            <ul>
-                <li><a href="show.jsp">收入</a></li>
-                <li><a href="show.jsp">支出</a></li>
-            </ul>
+        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>品牌管理</span></a>
         </li>
-        <li> <a href="#"><i class="icon icon-tag"></i> <span>订单详情</span></a> </li>
-        <li> <a href="#"><i class="icon icon-tags"></i> <span>库存管理</span></a> </li>
+        <li> <a href="#"><i class="icon icon-signal"></i> <span>类型模板管理</span></a> </li>
+        <li> <a href="#"><i class="icon icon-signal"></i> <span>商品审核</span></a> </li>
     </ul>
 </div>
 
