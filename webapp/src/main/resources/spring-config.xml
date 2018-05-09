@@ -31,9 +31,10 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
     	<property name="driverClass"><value>com.mysql.jdbc.Driver</value></property>
-        <property name="jdbcUrl"><value>jdbc:mysql://localhost:3306/6month</value></property>
+		<!--192.168.3.118-->
+        <property name="jdbcUrl"><value>jdbc:mysql://127.0.0.1:3306/5-8</value></property>
         <property name="user"><value>root</value></property>
-        <property name="password"><value>root</value></property>
+        <property name="password"><value>hansuyu</value></property>
     </bean>
 
 
@@ -56,6 +57,15 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.jk.pojo.User</value>
+				<value>com.jk.pojo.Goods</value>
+				<value>com.jk.pojo.Brand</value>
+				<value>com.jk.pojo.Customer</value>
+				<value>com.jk.pojo.GoodsSzie</value>
+				<value>com.jk.pojo.GoodsType</value>
+				<value>com.jk.pojo.Merchant</value>
+				<value>com.jk.pojo.OrderForm</value>
+				<value>com.jk.pojo.Repertory</value>
+				<value>com.jk.pojo.Role</value>
 			</list>
 		</property>
 	</bean>
