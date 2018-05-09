@@ -85,6 +85,7 @@
 		<tx:attributes>
 <!-- 			添加 -->
 			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
 <!-- 			修改 -->
 			<tx:method name="update*" propagation="REQUIRED" />
 <!-- 			添加或修改 -->
@@ -92,6 +93,9 @@
 <!-- 			删除 -->
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="remove*" propagation="REQUIRED" />
+			<!--查询-->
+			<tx:method name="query*" propagation="REQUIRED" />
+			<tx:method name="select*" propagation="REQUIRED" />
 			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
 		</tx:attributes>
  	</tx:advice>
