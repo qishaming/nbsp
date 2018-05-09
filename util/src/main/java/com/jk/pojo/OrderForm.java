@@ -33,6 +33,8 @@ public class OrderForm {
     private Integer merchantId;
     @Column(name = "goodsid")
     private Integer goodsid;
+    @Column(name = "orderFormState")
+    private Integer orderFormState;
 
     public String getOrderFormId() {
         return orderFormId;
@@ -109,6 +111,15 @@ public class OrderForm {
                 ", customerId=" + customerId +
                 ", merchantId=" + merchantId +
                 ", goodsid=" + goodsid +
+                ", orderFormState=" + orderFormState +
                 '}';
+    }
+
+    public Integer getOrderFormState() {
+        return orderFormState;
+    }
+
+    public void setOrderFormState(Integer orderFormState) {
+        this.orderFormState = orderFormState;
     }
 }

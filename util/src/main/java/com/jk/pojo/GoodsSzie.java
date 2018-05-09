@@ -14,12 +14,24 @@ public class GoodsSzie {
     @Column(name = "goodsSizeName")
     private String goodsSizeName;
 
+    @Column(name = "sizeAuditState")
+    private Integer sizeAuditState;
+
+    public Integer getSizeAuditState() {
+        return sizeAuditState;
+    }
+
     @Override
     public String toString() {
         return "GoodsSzie{" +
                 "goodsSizeId=" + goodsSizeId +
                 ", goodsSizeName='" + goodsSizeName + '\'' +
+                ", sizeAuditState=" + sizeAuditState +
                 '}';
+    }
+
+    public void setSizeAuditState(Integer sizeAuditState) {
+        this.sizeAuditState = sizeAuditState;
     }
 
     public Integer getGoodsSizeId() {
