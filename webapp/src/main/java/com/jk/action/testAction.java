@@ -2,6 +2,7 @@ package com.jk.action;
 
 import com.jk.pojo.User;
 import com.jk.service.testService;
+import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.List;
 @Action(value = "test",results = {
         @Result(name = "show",location = "/show.jsp")
 })
-public class testAction {
+public class testAction  implements ModelDriven<User>{
 
     @Autowired
     private testService service;
@@ -29,5 +30,10 @@ public class testAction {
 
     public List getList() {
         return list;
+    }
+
+    @Override
+    public User getModel() {
+        return null;
     }
 }

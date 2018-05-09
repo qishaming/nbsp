@@ -15,12 +15,24 @@ public class Brand {
     @Column(name = "brandName")
     private String brandName;
 
+    @Column(name = "brandAuditState")
+    private Integer brandAuditState;
+
     @Override
     public String toString() {
         return "Brand{" +
                 "brandId=" + brandId +
                 ", brandName='" + brandName + '\'' +
+                ", brandAuditState=" + brandAuditState +
                 '}';
+    }
+
+    public Integer getBrandAuditState() {
+        return brandAuditState;
+    }
+
+    public void setBrandAuditState(Integer brandAuditState) {
+        this.brandAuditState = brandAuditState;
     }
 
     public Integer getBrandId() {

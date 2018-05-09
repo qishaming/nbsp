@@ -23,6 +23,15 @@
     </properties>
 
     <dependencies>
+
+
+        <!--json，依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.24</version>
+        </dependency>
+
         <!-- Junit依赖 -->
         <dependency>
             <groupId>junit</groupId>
@@ -114,7 +123,11 @@
             <version>2.2.1-b03</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.24</version>
+        </dependency>
     </dependencies>
 
 </project>

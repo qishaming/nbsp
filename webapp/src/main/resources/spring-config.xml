@@ -31,7 +31,8 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
     	<property name="driverClass"><value>com.mysql.jdbc.Driver</value></property>
-        <property name="jdbcUrl"><value>jdbc:mysql://localhost:3306/6month</value></property>
+		<!--192.168.3.118-->
+        <property name="jdbcUrl"><value>jdbc:mysql://192.168.3.118:3306/6month</value></property>
         <property name="user"><value>root</value></property>
         <property name="password"><value>root</value></property>
     </bean>
@@ -56,6 +57,15 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.jk.pojo.User</value>
+				<value>com.jk.pojo.Goods</value>
+				<value>com.jk.pojo.Brand</value>
+				<value>com.jk.pojo.Customer</value>
+				<value>com.jk.pojo.GoodsSzie</value>
+				<value>com.jk.pojo.GoodsType</value>
+				<value>com.jk.pojo.Merchant</value>
+				<value>com.jk.pojo.OrderForm</value>
+				<value>com.jk.pojo.Repertory</value>
+				<value>com.jk.pojo.Role</value>
 			</list>
 		</property>
 	</bean>
@@ -75,6 +85,7 @@
 		<tx:attributes>
 <!-- 			添加 -->
 			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
 <!-- 			修改 -->
 			<tx:method name="update*" propagation="REQUIRED" />
 <!-- 			添加或修改 -->
@@ -82,12 +93,15 @@
 <!-- 			删除 -->
 			<tx:method name="delete*" propagation="REQUIRED" />
 			<tx:method name="remove*" propagation="REQUIRED" />
+			<!--查询-->
+			<tx:method name="query*" propagation="REQUIRED" />
+			<tx:method name="select*" propagation="REQUIRED" />
 			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
 		</tx:attributes>
  	</tx:advice>
 	<aop:config>
 <!-- 		第一个*代表所有的返回值类型；第二个*代表所有的类；第三个*代表类所有方法；..代表子或者孙子包；最后一个..代表所有的参数 -->
-		<aop:pointcut id="transactionPointcut" expression="(execution(* com.*.*.service..*.*(..)))" />
+		<aop:pointcut id="transactionPointcut" expression="(execution(* com.*.service..*.*(..)))" />
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
 	</aop:config>
 </beans>
