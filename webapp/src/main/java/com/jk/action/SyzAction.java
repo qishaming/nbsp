@@ -13,18 +13,5 @@ import java.util.List;
         @Result(name = "show",location = "/showtow.jsp")
 })
 public class SyzAction {
-    @Autowired
-    private SyzService syzservice;
 
-    private Integer goodsid;
-    private List list;
-    @Action(value = "queryGoods")
-    public String queryGoods(){
-        list = syzservice.queryGoods();
-        return  "show";
-    };
-
-    public List getList() {
-        return list;
-    }
 }
