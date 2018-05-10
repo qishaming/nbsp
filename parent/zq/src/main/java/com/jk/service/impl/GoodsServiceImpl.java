@@ -1,7 +1,6 @@
 package com.jk.service.impl;
 
 
-import com.jk.pojo.Type;
 import com.jk.service.GoodsService;
 import com.jk.dao.GoodsDao;
 import java.util.List;

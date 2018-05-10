@@ -1,7 +1,6 @@
 package com.jk.dao;
 
 
-import com.jk.pojo.Type;
 
 import java.util.List;
 

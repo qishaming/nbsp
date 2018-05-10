@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-@Action(value = "test",results = {
+@Action(value = "jpl",results = {
         @Result(name = "show",location = "/show.jsp")
 })
 public class jplAction {

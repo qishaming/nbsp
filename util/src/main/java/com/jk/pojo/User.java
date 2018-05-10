@@ -3,34 +3,22 @@ package com.jk.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pyg_user")
+@Table(name = "user")
 public class User {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "u_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer id;
-    @Column(name = "username")
+    @Column(name = "u_username")
     private String username;
-    @Column(name = "userPassword")
-    private String userPassword;
-    @Column(name = "customerId")
-    private Integer customerId;
-    @Column(name = "merchantId")
-    private Integer merchantId;
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", customerId=" + customerId +
-                ", merchantId=" + merchantId +
-                '}';
-    }
-
+    @Column(name = "u_password")
+    private String password;
+    @Column(name = "u_state")
+    private Integer userstate;
+    @Column(name = "u_phone")
+    private String userphone;
+   /*1512*/
     public Integer getId() {
         return id;
     }
@@ -47,29 +35,38 @@ public class User {
         this.username = username;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getUserstate() {
+        return userstate;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setUserstate(Integer userstate) {
+        this.userstate = userstate;
     }
 
-    public Integer getMerchantId() {
-        return merchantId;
+    public String getUserphone() {
+        return userphone;
     }
 
-    public void setMerchantId(Integer merchantId) {
-        this.merchantId = merchantId;
+    public void setUserphone(String userphone) {
+        this.userphone = userphone;
     }
 
-    /*pull?*/
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userstate=" + userstate +
+                ", userphone='" + userphone + '\'' +
+                '}';
+    }
 }

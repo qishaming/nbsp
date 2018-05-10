@@ -15,12 +15,24 @@ public class GoodsType {
     @Column(name = "goodstypename")
     private String goodstypename;
 
+    @Column(name = "goodsTypeAuditState")
+    private Integer goodsTypeAuditState;
+
     @Override
     public String toString() {
         return "GoodsType{" +
                 "goodstypeid=" + goodstypeid +
                 ", goodstypename='" + goodstypename + '\'' +
+                ", goodsTypeAuditState=" + goodsTypeAuditState +
                 '}';
+    }
+
+    public Integer getGoodsTypeAuditState() {
+        return goodsTypeAuditState;
+    }
+
+    public void setGoodsTypeAuditState(Integer goodsTypeAuditState) {
+        this.goodsTypeAuditState = goodsTypeAuditState;
     }
 
     public Integer getGoodstypeid() {
