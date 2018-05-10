@@ -1,10 +1,12 @@
 package com.jk.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "pyg_merchant")
-public class Merchant {
+public class Merchant implements Serializable{
+    private static final long serialVersionUID = 7136710778360672996L;
     @Id
     @Column(name = "merchantId")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +25,8 @@ public class Merchant {
     private String merchantName;
     @Column(name = "merchantMail")
     private String merchantMail;
+    @Column(name = "merchantAuditState")
+    private  Integer merchantAuditState;
 
     public Integer getMerchantId() {
         return merchantId;
@@ -88,6 +92,14 @@ public class Merchant {
         this.merchantMail = merchantMail;
     }
 
+    public Integer getMerchantAuditState() {
+        return merchantAuditState;
+    }
+
+    public void setMerchantAuditState(Integer merchantAuditState) {
+        this.merchantAuditState = merchantAuditState;
+    }
+
     @Override
     public String toString() {
         return "Merchant{" +
@@ -96,9 +108,10 @@ public class Merchant {
                 ", merchantArea='" + merchantArea + '\'' +
                 ", merchantRegisterTime='" + merchantRegisterTime + '\'' +
                 ", merchantUpdateTime='" + merchantUpdateTime + '\'' +
-                ", merchantPhone=" + merchantPhone +
-                ", merchantName=" + merchantName +
-                ", merchantMail=" + merchantMail +
+                ", merchantPhone='" + merchantPhone + '\'' +
+                ", merchantName='" + merchantName + '\'' +
+                ", merchantMail='" + merchantMail + '\'' +
+                ", merchantAuditState=" + merchantAuditState +
                 '}';
     }
 }
