@@ -339,8 +339,7 @@
 						$(".b").html(hm);
 					}, 10);
 				});
-				
-				
+
 				
 			$.ajax({
 				url:"<%=request.getContextPath()%>/LoginAction/getyanzhengma.action",

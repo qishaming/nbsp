@@ -70,8 +70,7 @@ public class ValidateCodeUtil {
   
         x = width / (codeCount + 2);//每个字符的宽度(左右各空出一个字符)  
         fontHeight = height - 2;//字体的高度  
-        codeY = height - 4;  
-  
+        codeY = height - 4;
         // 图像buffer  
         buffImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);  
         Graphics2D g = buffImg.createGraphics();  

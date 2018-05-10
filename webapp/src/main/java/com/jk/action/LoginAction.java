@@ -117,7 +117,6 @@ public class LoginAction extends BaseAction{
             Map<String,Object> map=new HashMap<String,Object>();
             String sessionCode = ServletActionContext.getRequest().getSession().getAttribute("code").toString();
             map=loginService.login(username,password,validataCode,sessionCode);
-
             String mas = (String) map.get("mas");
             int loginFlag=1;
             if(mas=="errorcode"){

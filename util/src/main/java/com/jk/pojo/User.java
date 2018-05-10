@@ -58,7 +58,6 @@ public class User {
     public void setUserphone(String userphone) {
         this.userphone = userphone;
     }
-
     @Override
     public String toString() {
         return "User{" +

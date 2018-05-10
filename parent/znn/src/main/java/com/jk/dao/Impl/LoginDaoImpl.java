@@ -13,7 +13,6 @@ public class LoginDaoImpl implements LoginDao{
     @Autowired
     private SessionFactory sessionFactory;
 
-
     @Override
     public User querylogin(String username) {
         User user =(User)sessionFactory.getCurrentSession().createQuery(" from  User  as u where u.username='" + username + "'").uniqueResult();

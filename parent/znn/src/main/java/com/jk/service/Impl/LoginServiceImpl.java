@@ -39,7 +39,6 @@ public class LoginServiceImpl implements LoginService{
                         map.put("user", user);
                         mas="3";//根据不同的mas值跳页面
                     }
-
                 }else{
                     mas="errorcode";
                     /*loginFlag=4;
