@@ -28,6 +28,7 @@ public class Merchant implements Serializable{
     @Column(name = "merchantAuditState")
     private  Integer merchantAuditState;
 
+
     public Integer getMerchantId() {
         return merchantId;
     }
