@@ -18,7 +18,7 @@ public class User {
     private Integer userstate;
     @Column(name = "u_phone")
     private String userphone;
-
+   /*1512*/
     public Integer getId() {
         return id;
     }
