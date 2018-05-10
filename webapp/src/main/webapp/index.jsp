@@ -49,8 +49,8 @@
     <ul>
         <li class="active"><i class="icon icon-home"></i> <span>商品管理</span></a>
             <ul>
-                <li><a href="show.jsp">商品录入</a></li>
-                <li><a href="show.jsp">商品管理</a></li>
+                <li><a href="<%=request.getContextPath()%>/gyc!queryTree.action">商品录入</a></li>
+                <li><a href="<%=request.getContextPath()%>/test!toShow.action">商品管理</a></li>
             </ul>
         </li>
         <li> <a href="#"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
