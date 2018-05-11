@@ -6,38 +6,32 @@ import javax.persistence.*;
 @Table(name = "pyg_repertory")
 public class Repertory {
     @Id
-    @Column(name = "orderFormId")
+    @Column(name = "repertoryId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer orderFormId;
-    @Column(name = "merchantUpdateTime")
-    private String merchantUpdateTime;
-    @Column(name = "customerId")
-    private Integer customerId;
+    private Integer repertoryId;
+    @Column(name = "repertoryUpdateTime")
+    private String repertoryUpdateTime;
     @Column(name = "merchantId")
     private Integer merchantId;
+    @Column(name = "goodsid")
+    private Integer goodsid;
+    @Column(name = "repertoryNumber")
+    private Integer repertoryNumber;
 
-    public Integer getOrderFormId() {
-        return orderFormId;
+    public Integer getRepertoryId() {
+        return repertoryId;
     }
 
-    public void setOrderFormId(Integer orderFormId) {
-        this.orderFormId = orderFormId;
+    public void setRepertoryId(Integer repertoryId) {
+        this.repertoryId = repertoryId;
     }
 
-    public String getMerchantUpdateTime() {
-        return merchantUpdateTime;
+    public String getRepertoryUpdateTime() {
+        return repertoryUpdateTime;
     }
 
-    public void setMerchantUpdateTime(String merchantUpdateTime) {
-        this.merchantUpdateTime = merchantUpdateTime;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setRepertoryUpdateTime(String repertoryUpdateTime) {
+        this.repertoryUpdateTime = repertoryUpdateTime;
     }
 
     public Integer getMerchantId() {
@@ -48,13 +42,30 @@ public class Repertory {
         this.merchantId = merchantId;
     }
 
+    public Integer getGoodsid() {
+        return goodsid;
+    }
+
+    public void setGoodsid(Integer goodsid) {
+        this.goodsid = goodsid;
+    }
+
+    public Integer getRepertoryNumber() {
+        return repertoryNumber;
+    }
+
+    public void setRepertoryNumber(Integer repertoryNumber) {
+        this.repertoryNumber = repertoryNumber;
+    }
+
     @Override
     public String toString() {
         return "Repertory{" +
-                "orderFormId=" + orderFormId +
-                ", merchantUpdateTime='" + merchantUpdateTime + '\'' +
-                ", customerId=" + customerId +
+                "repertoryId=" + repertoryId +
+                ", repertoryUpdateTime='" + repertoryUpdateTime + '\'' +
                 ", merchantId=" + merchantId +
+                ", goodsid=" + goodsid +
+                ", repertoryNumber=" + repertoryNumber +
                 '}';
     }
 }
