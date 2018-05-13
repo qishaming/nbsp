@@ -20,4 +20,9 @@ public class testServiceImpl implements testService {
         return dao.queryAll();
 
     }
+
+    @Override
+    public List queryRepertory() {
+        return dao.queryRepertory();
+    }
 }
