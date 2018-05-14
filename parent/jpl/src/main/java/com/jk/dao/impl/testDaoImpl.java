@@ -1,6 +1,8 @@
 package com.jk.dao.impl;
 
 import com.jk.dao.testDao;
+import com.jk.pojo.Goods;
+import com.jk.pojo.Repertory;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +33,33 @@ public class testDaoImpl implements testDao {
                 "LEFT JOIN 6month.pyg_goodssize pgs ON pgs.goodsSizeId=pg.sizeId");
         List list = sessionFactory.openSession().createSQLQuery(sql.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
         return list ;
+    }
+
+    @Override
+    public Repertory queryCountById(Integer repertoryId) {
+        Repertory r = sessionFactory.openSession().get(Repertory.class,repertoryId);
+        return r;
+    }
+
+    @Override
+    public void xiaJiaById(Goods goods) {
+        String sql = "UPDATE 6month.pyg_goods SET goodsAuditState = "+goods.getGoodsAuditState()+" WHERE goodsid = "+goods.getGoodsid();
+        sessionFactory.openSession().createSQLQuery(sql).executeUpdate();
+    }
+
+    @Override
+    public void shangJiaById(Goods goods) {
+        String sql = "UPDATE 6month.pyg_goods SET goodsAuditState = "+goods.getGoodsAuditState()+" WHERE goodsid = "+goods.getGoodsid();
+        sessionFactory.openSession().createSQLQuery(sql).executeUpdate();
+    }
+
+    @Override
+    public void updatedRepertory(Repertory repertory) {
+
+
+        String sql = "UPDATE pyg_repertory SET repertoryNumber = "+repertory.getRepertoryNumber()+" WHERE repertoryId = "+repertory.getRepertoryId();
+
+
+        sessionFactory.getCurrentSession().createSQLQuery(sql).executeUpdate();
     }
 }

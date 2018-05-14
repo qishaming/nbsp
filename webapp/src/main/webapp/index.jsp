@@ -67,7 +67,7 @@
             </ul>
         </li>
         <li> <a href="#"><i class="icon icon-tag"></i> <span>订单详情</span></a> </li>
-        <li> <a href="#"><i class="icon icon-tags"></i> <span>库存管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jpl/aa.action"><i class="icon icon-tags"></i> <span>库存管理</span></a> </li>
     </ul>
 </div>
 

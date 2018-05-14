@@ -171,11 +171,11 @@
             success:function(data){
                // idsStr = data.substring(1,data.length-1);
                 if(data=="1") {
-                    location.href = "<%=request.getContextPath()%>/index.jsp";
+                    location.href = "<%=request.getContextPath()%>/index1.jsp";
                    }else if(data=="2"){
-                        location.href="<%=request.getContextPath()%>/show.jsp";
-                    }else if(data=="3"){
                         location.href="<%=request.getContextPath()%>/index.jsp";
+                    }else if(data=="3"){
+                        location.href="<%=request.getContextPath()%>/show.jsp";
                     } else if(data=="usererror"){
                     alert("账号或密码错误");
                 }else if(data=="passworderror"){
