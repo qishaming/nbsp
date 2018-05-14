@@ -35,6 +35,16 @@ public class OrderForm {
     private Integer goodsid;
     @Column(name = "orderFormState")
     private Integer orderFormState;
+    @Column(name = "userEvaluation")
+    private String userEvaluation;
+
+    public String getUserEvaluation() {
+        return userEvaluation;
+    }
+
+    public void setUserEvaluation(String userEvaluation) {
+        this.userEvaluation = userEvaluation;
+    }
 
     public String getOrderFormId() {
         return orderFormId;
@@ -100,6 +110,14 @@ public class OrderForm {
         this.goodsid = goodsid;
     }
 
+    public Integer getOrderFormState() {
+        return orderFormState;
+    }
+
+    public void setOrderFormState(Integer orderFormState) {
+        this.orderFormState = orderFormState;
+    }
+
     @Override
     public String toString() {
         return "OrderForm{" +
@@ -112,14 +130,7 @@ public class OrderForm {
                 ", merchantId=" + merchantId +
                 ", goodsid=" + goodsid +
                 ", orderFormState=" + orderFormState +
+                ", userEvaluation='" + userEvaluation + '\'' +
                 '}';
-    }
-
-    public Integer getOrderFormState() {
-        return orderFormState;
-    }
-
-    public void setOrderFormState(Integer orderFormState) {
-        this.orderFormState = orderFormState;
     }
 }
