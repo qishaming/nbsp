@@ -7,24 +7,25 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(name = "u_id")
+    @Column(name = "userid")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer id;
-    @Column(name = "u_username")
+    private  Integer userid;
+    @Column(name = "username")
     private String username;
-    @Column(name = "u_password")
+    @Column(name = "password")
     private String password;
-    @Column(name = "u_state")
+    @Column(name = "userstate")
     private Integer userstate;
-    @Column(name = "u_phone")
+    @Column(name = "userphone")
     private String userphone;
    /*1512*/
-    public Integer getId() {
-        return id;
+
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -62,7 +63,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userid=" + userid +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", userstate=" + userstate +

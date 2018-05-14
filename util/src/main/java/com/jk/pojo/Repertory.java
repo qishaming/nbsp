@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "pyg_repertory")
-public class Repertory {
+public class Repertory{
     @Id
     @Column(name = "repertoryId")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,6 +17,7 @@ public class Repertory {
     private Integer goodsid;
     @Column(name = "repertoryNumber")
     private Integer repertoryNumber;
+
 
     public Integer getRepertoryId() {
         return repertoryId;

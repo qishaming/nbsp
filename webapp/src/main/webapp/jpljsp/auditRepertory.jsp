@@ -16,6 +16,41 @@
 </head>
 
 <body>
+<%--修改库存的div--%>
+<div class="modal fade" id="formId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title"  onclick="updateyy(xwid)">
+                    库存修改
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form id="formIding">
+                    <input type="hidden" name="repertory.repertoryId" >
+                    <a class="icon-minus" href="javascript:jian()"></a>
+                    <input  name="repertory.repertoryNumber" class="easyui-textbox">
+                    <a class="icon-plus" href="javascript:jia()"></a>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateCount()">
+                    提交更改
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div id="header">
     <h1><a href="http://www.mafiashare.net">Shared on www.MafiaShare.net</a></h1>
 </div>
@@ -41,11 +76,7 @@
         <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
     </ul>
 </div>
-<!--<div id="search">
-  <input type="text" placeholder="Search here..."/>
-  <button type="submit" class="tip-left" title="Search"><i class="icon-search icon-white"></i></button>
-</div>-->
-<!--close-top-Header-menu-->
+
 
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i>商家管理</a>
     <ul>
@@ -177,60 +208,90 @@
                 title:'操作',align:'center',
                 width:100,formatter: function(value,row,index){
                     if(row.goodsAuditState==3){
-                        return "<input type='button' value='修改库存'  onclick='updateCount("+value+")'/><br/><input type='button' name='"+value+"' onclick='xiaJia("+value+")' class='repertoryId' value='上架'/>";
+                        return "<button  class='btn btn-primary'  data-toggle='modal' data-target='#formId' onclick='updateyy("+value+")'>修改库存</button><br/><li><i name='"+value+"' onclick='xiaJia("+row.goodsid+")' class='icon-circle-arrow-down' ></i>下架</li>";
                     }
                     if(row.goodsAuditState==4){
-                        return "<input type='button' value='修改库存'  onclick='updateCount("+value+")'/><br/><input type='button' name='"+value+"' onclick='shangJia("+value+")' class='repertoryId' value='下架'/>";
+                        return "<button class='btn btn-primary'  data-toggle='modal' data-target='#formId' onclick='updateyy("+value+")'>修改库存</button><br/><li><i name='"+value+"' onclick='shangJia("+row.goodsid+")' class='icon-hand-up' ></i>上架</li>";
                     }
                 }
             } ]
     })
 
     //下架的方法
-    function xiaJia(repertoryId) {
-        alert(repertoryId);
+    function xiaJia(goodsid) {
+        $.ajax({
+            url:"<%=request.getContextPath()%>/jpl/xiaJiaById.action",
+            type:"post",
+            data:{"goodsid":goodsid},
+            success:function (){
+                alert("下架成功");
+                $("#table").bootstrapTable("refresh");
+            },error:function () {
+                alert("下架失败");
+            }
+        });
     }
 
-    //下架的方法
-    function shangJia(repertoryId) {
-        alert(repertoryId);
+    //上架的方法
+    function shangJia(goodsid) {
+        $.ajax({
+            url:"<%=request.getContextPath()%>/jpl/shangJiaById.action",
+            type:"post",
+            data:{"goodsid":goodsid},
+            success:function (){
+                alert("上架成功");
+                $("#table").bootstrapTable("refresh");
+            },error:function () {
+                alert("上架失败");
+            }
+        });
     }
 </script>
 <script type="text/javascript">
-    function updateCount(repertoryId){
-        BootstrapDialog.show({
-            title:"修改页面",//标题
-            message:$("<div></div>").load("<%=request.getContextPath()%>/jpljsp/updateCount.jsp?repertoryId="+repertoryId),//弹框内容
-            type:BootstrapDialog.TYPE_WARNING,//弹框的类型
-            closable: true,
-            draggable : true,
-            buttons:[
-                {
-                    label:"确定",
-                    cssClass:"btn-success",
-                    action:function(dialog){
-                        $.ajax({
-                            url:"<%=request.getContextPath()%>/fly/updateUser",
-                            type:"post",
-                            data:$("#addform").serialize(),
-                            dataType:"text",
-                            success:function(result){
-                                if(result=="success"){
-                                    dialog.close();
-                                    $("#table").bootstrapTable("refresh",{pageNumber:1});
-                                }else{
-                                    alert("修改失败")
-                                }
-                            }
+    //修改
+    function updateyy(repertoryId){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/jpl/queryCountById.action",
+            type:"post",
+            data:{"repertoryId":repertoryId},
+            dataType:"json",
+            success:function (data){
+                $("[name='repertory.repertoryId']").val(data.repertoryId);
+                $("[name='repertory.repertoryNumber']").val(data.repertoryNumber);
+            }
+        });
 
-                        })
-                    }
-                }
-            ]
+    }
+    function jian() {
+
+        var shu = $("[name='repertory.repertoryNumber']").val();
+        shu-=1;
+        $("[name='repertory.repertoryNumber']").val(shu);
+    }
+    function jia() {
+
+        var shu = $("[name='repertory.repertoryNumber']").val();
+        shu++;
+        $("[name='repertory.repertoryNumber']").val(shu);
+    }
+
+    function updateCount() {
+        $.ajax({
+            url:"<%=request.getContextPath()%>/jpl/updatedRepertory.action",
+            type:"post",
+            data:$("#formIding").serialize(),
+            dataType:"text",
+            success:function (updateFlag){
+                alert("库存修改成功");
+                $("#table").bootstrapTable('refresh');
+
+            },
+            error:function (){
+                alert("修改失败");
+
+            }
+
         })
-
-
-
     }
 
 

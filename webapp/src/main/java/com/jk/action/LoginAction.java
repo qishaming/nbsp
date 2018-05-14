@@ -5,14 +5,7 @@ import com.jk.util.ValidateCodeUtil;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.Column;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +26,7 @@ public class LoginAction extends BaseAction{
     public void setValidataCode(String validataCode) {
         this.validataCode = validataCode;
     }
-    private  User user=new User();
+    private User user=new User();
 
     public User getUser() {
         return user;

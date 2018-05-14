@@ -1,11 +1,11 @@
 package com.jk.service.Impl;
 
 import com.jk.dao.LoginDao;
+import com.jk.pojo.User;
 import com.jk.service.LoginService;
-import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.jk.pojo.User;
+
 import java.util.HashMap;
 import java.util.Map;
 
