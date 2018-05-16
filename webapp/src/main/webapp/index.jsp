@@ -54,12 +54,9 @@
             </ul>
         </li>
         <li> <a href="#"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
-        <li> <i class="icon icon-edit"></i> <span>基本信息管理</span></a>
-            <ul>
-                <li><a href="show.jsp">修改资料</a></li>
-                <li><a href="show.jsp">修改密码</a></li>
-            </ul>
-        </li>
+        <li> <a href="gyc/showRegister.jsp"><i class="icon icon-signal"></i> <span>修改资料</span></a> </li>
+        <li> <a href="gyc/updatePsword.jsp"><i class="icon icon-signal"></i> <span>修改密码</span></a> </li>
+
         <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>财务状况</span></a>
             <ul>
                 <li><a href="show.jsp">收入</a></li>
