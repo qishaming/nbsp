@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "pyg_bigType")
-public class bigType {
+public class BigType {
     @Id
     @Column(name = "bigTypeId")
     @GeneratedValue(strategy = GenerationType.AUTO)

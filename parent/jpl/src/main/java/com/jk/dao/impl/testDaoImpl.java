@@ -43,13 +43,13 @@ public class testDaoImpl implements testDao {
 
     @Override
     public void xiaJiaById(Goods goods) {
-        String sql = "UPDATE 6month.pyg_goods SET goodsAuditState = "+goods.getGoodsAuditState()+" WHERE goodsid = "+goods.getGoodsid();
+        String sql = "UPDATE 6month.pyg_goods SET goodsAuditState = "+goods.getGoodsAuditState()+" WHERE goodsid = "+goods.getGoodsId();
         sessionFactory.openSession().createSQLQuery(sql).executeUpdate();
     }
 
     @Override
     public void shangJiaById(Goods goods) {
-        String sql = "UPDATE 6month.pyg_goods SET goodsAuditState = "+goods.getGoodsAuditState()+" WHERE goodsid = "+goods.getGoodsid();
+        String sql = "UPDATE 6month.pyg_goods SET goodsAuditState = "+goods.getGoodsAuditState()+" WHERE goodsid = "+goods.getGoodsId();
         sessionFactory.openSession().createSQLQuery(sql).executeUpdate();
     }
 

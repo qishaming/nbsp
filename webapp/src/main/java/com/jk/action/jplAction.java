@@ -80,7 +80,7 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
     @Action(value = "xiaJiaById")
     public void xiaJiaById(){
         Goods g = new Goods();
-        g.setGoodsid(goodsid);
+        g.setGoodsId(goodsid);
         g.setGoodsAuditState(4);
         service.xiaJiaById(g);
 
@@ -93,7 +93,7 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
     @Action(value = "shangJiaById")
     public void shangJiaById(){
         Goods g = new Goods();
-        g.setGoodsid(goodsid);
+        g.setGoodsId(goodsid);
         g.setGoodsAuditState(3);
         service.shangJiaById(g);
     }

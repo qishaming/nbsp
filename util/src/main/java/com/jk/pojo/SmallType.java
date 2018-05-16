@@ -1,10 +1,9 @@
 package com.jk.pojo;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "pyg_smallType")
-public class smallType {
+public class SmallType {
     @Id
     @Column(name = "smallTypeId")
     @GeneratedValue(strategy = GenerationType.AUTO)

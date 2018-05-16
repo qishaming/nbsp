@@ -61,11 +61,11 @@
 				<value>com.jk.pojo.Brand</value>
 				<value>com.jk.pojo.Customer</value>
 				<value>com.jk.pojo.GoodsSzie</value>
-				<value>com.jk.pojo.GoodsType</value>
+				<value>com.jk.pojo.SmallType</value>
 				<value>com.jk.pojo.Merchant</value>
 				<value>com.jk.pojo.OrderForm</value>
 				<value>com.jk.pojo.Repertory</value>
-				<value>com.jk.pojo.Role</value>
+				<value>com.jk.pojo.BigType</value>
 			</list>
 		</property>
 	</bean>
