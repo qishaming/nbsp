@@ -1,6 +1,8 @@
 package com.jk.util;
 
-import java.io.IOException;  
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;  
 import java.util.ArrayList;  
 import java.util.List;  
@@ -137,11 +139,15 @@ public class ExportExcel {
                 try  
                 {  
                     String fileName = "Excel-" + String.valueOf(System.currentTimeMillis()).substring(4, 13) + ".xls";  
-                    String headStr = "attachment; filename=\"" + fileName + "\"";  
-                    response.setContentType("APPLICATION/OCTET-STREAM");  
-                    response.setHeader("Content-Disposition", headStr);  
+                    String headStr = "attachment; filename=\"" + fileName + "\"";
+                    File file = new File("D:\\outProduct.xls");
+                    OutputStream  os=new FileOutputStream(file);
+                    //      写入数据，并关闭文件
+                    workbook.write(os);
+                   /*response.setContentType("APPLICATION/OCTET-STREAM");
+                    response.setHeader("Content-Disposition", headStr);
                     OutputStream out = response.getOutputStream();  
-                    workbook.write(out);  
+                    workbook.write(out); */
                 }  
                 catch (IOException e)  
                 {  
