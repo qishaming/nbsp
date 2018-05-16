@@ -17,4 +17,6 @@ public interface testDao {
 
 
     void updatedRepertory(Repertory repertory);
+
+    List queryRepertoryExcel();
 }

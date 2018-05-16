@@ -62,4 +62,15 @@ public class testDaoImpl implements testDao {
 
         sessionFactory.getCurrentSession().createSQLQuery(sql).executeUpdate();
     }
+
+    @Override
+    public List queryRepertoryExcel() {
+        StringBuffer sql=new StringBuffer("SELECT pr.repertoryId,pr.repertoryUpdateTime,pr.repertoryNumber,pg.goodsname,pgt.goodstypename,pb.brandName,pgs.goodsSizeName,pg.`goodsPrice` FROM 6month.pyg_repertory pr "
+                +"LEFT JOIN 6month.pyg_goods pg ON pr.goodsid=pg.goodsid "
+                +"LEFT JOIN 6month.pyg_brand pb ON pb.brandId=pg.brandId "
+                +"LEFT JOIN 6month.pyg_goodstype pgt ON pgt.goodstypeid=pg.typeid "
+                +"LEFT JOIN 6month.pyg_goodssize pgs ON pgs.goodsSizeId=pg.sizeId");
+        List list = sessionFactory.getCurrentSession().createSQLQuery(sql.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+        return list;
+    }
 }

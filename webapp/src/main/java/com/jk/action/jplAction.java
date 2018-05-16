@@ -1,40 +1,37 @@
 package com.jk.action;
 
-import com.alibaba.fastjson.JSON;
 import com.jk.pojo.Goods;
 import com.jk.pojo.Repertory;
 import com.jk.service.testService;
-import com.opensymphony.xwork2.ModelDriven;
-import com.sun.media.sound.ModelDirectedPlayer;
+import com.jk.util.ExportExcel;
+import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.SessionAttribute;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Namespace(value="/jpl")
-@ParentPackage("struts-default")
+@ParentPackage("basePackage")
 public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
 
     @Autowired
     private testService service;
 
     private List list;
-    private HttpServletRequest request;
     private Integer repertoryId;
     private Integer repertoryNumber;
-
-
-
-
     private Integer goodsid;
     private Repertory repertory = new Repertory();
+    private  static final Logger logger = Logger.getLogger(jplAction.class);
+    private HttpServletResponse response;
+    private HttpServletRequest request;
     /**
      * 这是查询库存的方法
      */
@@ -110,7 +107,41 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
         service.updatedRepertory(repertory);
     }
 
+    @Action(value = "poiExcel")
+    public void poiExcel(){
+        List list = service.queryRepertoryExcel();
+        //设置表头
+        String[] rowName = {"库存编号","修改时间","库存数量","商品名称","商品类型","商品品牌","商品规格","商品价格"};
+        List<Object[]> dataList=new ArrayList<Object[]>();
+        for (int i = 0; i < list.size(); i++) {
+            HashMap<String,Object> map = (HashMap<String, Object>) list.get(i);
 
+            Object[] array = map.values().toArray();
+            dataList.add(array);
+        }
+        ExportExcel exportExcel = new ExportExcel("库存信息",rowName, dataList, response);
+        try {
+            exportExcel.export();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public HttpServletResponse getResponse() {
+        return response;
+    }
+
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
+    }
 
     public List getList() {
         return list;

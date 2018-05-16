@@ -20,4 +20,6 @@ public interface testService {
 
 
     void updatedRepertory(Repertory repertory);
+
+    List queryRepertoryExcel();
 }

@@ -26,8 +26,19 @@
 	<constant name="struts.tag.altSyntax" value="true" />
 	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
 	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
-	<package name="basePackage" extends="struts-default" >
-		
+	<package name="basePackage" extends="struts-default">
+		<interceptors>
+			<interceptor name="myInterceptor" class="com.jk.util.Myinterceptor"/>
+			<interceptor-stack name="dftStack">
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+
+		</interceptors>
+		<default-interceptor-ref name="dftStack"/>
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+		</global-results>
 	</package>
 
 </struts>

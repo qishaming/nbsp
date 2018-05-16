@@ -115,9 +115,10 @@
                 <div class="widget-box">
                     <div class="widget-title">
                         <span class="icon"><i class="icon-th"></i></span>
-                        <h5>数据展示</h5>
-
+                        <h5>数据展示</h5><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/><nbsp/>
+                        <button  class='btn btn-success' onclick="poiExcel()">打印报表</button>
                     </div>
+
                     <table id="table" class="table"></table>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered data-table">
@@ -148,15 +149,14 @@
         minimumCountColumns:1,//最小留下一个
         showRefresh:true,//显示刷新按钮
         showToggle:true,//显示切换视图
-//     	  	    search:true,//是否显示搜索框
+        search:true,//是否显示搜索框
         searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
         pagination: true,                   //是否显示分页（*）
         sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
-        silent: true,
+        //silent: true,
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
         pageSize: 3,                     //每页的记录行数（*）
         pageList: [3,10,15],        //可供选择的每页的行数（*）
-        search: true,                      //是否显示表格搜索
         showColumns: true,                  //是否显示所有的列（选择显示的列）
         clickToSelect: true,                //是否启用点击选中行
         uniqueId: "orderFormId",                     //每一行的唯一标识，一般为主键列
@@ -293,8 +293,17 @@
 
         })
     }
-
-
+</script>
+<script type="text/javascript">
+    function poiExcel() {
+        $.ajax({
+            url:"<%=path%>/jpl/poiExcel.action",
+            type:"post",
+            success:function () {
+                alert("导出报表成功");
+            }
+        })
+    }
 </script>
 </body>
 </html>

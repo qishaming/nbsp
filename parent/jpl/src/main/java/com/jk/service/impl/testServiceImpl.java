@@ -48,5 +48,10 @@ public class testServiceImpl implements testService {
         dao.updatedRepertory(repertory);
     }
 
+    @Override
+    public List queryRepertoryExcel() {
+        return dao.queryRepertoryExcel();
+    }
+
 
 }
