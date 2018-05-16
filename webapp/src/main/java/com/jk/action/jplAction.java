@@ -30,7 +30,7 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
     private Integer goodsid;
     private Repertory repertory = new Repertory();
     private  static final Logger logger = Logger.getLogger(jplAction.class);
-    private HttpServletResponse response;
+    private HttpServletResponse responsee;
     private HttpServletRequest request;
     /**
      * 这是查询库存的方法
@@ -114,12 +114,12 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
         String[] rowName = {"库存编号","修改时间","库存数量","商品名称","商品类型","商品品牌","商品规格","商品价格"};
         List<Object[]> dataList=new ArrayList<Object[]>();
         for (int i = 0; i < list.size(); i++) {
-            HashMap<String,Object> map = (HashMap<String, Object>) list.get(i);
+           /* HashMap<String,Object> map = (HashMap<String, Object>) list.get(i);
+            Object[] array = map.values().toArray();*/
 
-            Object[] array = map.values().toArray();
-            dataList.add(array);
+            dataList.add((Object[]) list.get(i));
         }
-        ExportExcel exportExcel = new ExportExcel("库存信息",rowName, dataList, response);
+        ExportExcel exportExcel = new ExportExcel("库存信息",rowName, dataList,responsee);
         try {
             exportExcel.export();
         } catch (Exception e) {
@@ -127,12 +127,12 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
         }
     }
 
-    public HttpServletResponse getResponse() {
-        return response;
+    public HttpServletResponse getResponsee() {
+        return responsee;
     }
 
-    public void setResponse(HttpServletResponse response) {
-        this.response = response;
+    public void setResponsee(HttpServletResponse responsee) {
+        this.responsee = responsee;
     }
 
     public HttpServletRequest getRequest() {
