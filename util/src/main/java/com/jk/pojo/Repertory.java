@@ -11,13 +11,10 @@ public class Repertory{
     private Integer repertoryId;
     @Column(name = "repertoryUpdateTime")
     private String repertoryUpdateTime;
-    @Column(name = "merchantId")
-    private Integer merchantId;
-    @Column(name = "goodsid")
-    private Integer goodsid;
+    @Column(name = "goodsId")
+    private Integer goodsId;
     @Column(name = "repertoryNumber")
     private Integer repertoryNumber;
-
 
     public Integer getRepertoryId() {
         return repertoryId;
@@ -35,20 +32,12 @@ public class Repertory{
         this.repertoryUpdateTime = repertoryUpdateTime;
     }
 
-    public Integer getMerchantId() {
-        return merchantId;
+    public Integer getGoodsId() {
+        return goodsId;
     }
 
-    public void setMerchantId(Integer merchantId) {
-        this.merchantId = merchantId;
-    }
-
-    public Integer getGoodsid() {
-        return goodsid;
-    }
-
-    public void setGoodsid(Integer goodsid) {
-        this.goodsid = goodsid;
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
     public Integer getRepertoryNumber() {
@@ -64,8 +53,7 @@ public class Repertory{
         return "Repertory{" +
                 "repertoryId=" + repertoryId +
                 ", repertoryUpdateTime='" + repertoryUpdateTime + '\'' +
-                ", merchantId=" + merchantId +
-                ", goodsid=" + goodsid +
+                ", goodsId=" + goodsId +
                 ", repertoryNumber=" + repertoryNumber +
                 '}';
     }

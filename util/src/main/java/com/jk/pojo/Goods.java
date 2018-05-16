@@ -1,30 +1,28 @@
 package com.jk.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "pyg_goods")
-public class Goods {
+public class Goods{
 
     @Id
-    @Column(name = "goodsid")
+    @Column(name = "goodsId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private  Integer goodsid;
+    private  Integer goodsId;//主键
 
-    @Column(name = "goodsname")
-    private String goodsname;
-
-    @Column(name = "typeid")
-    private Integer typeid;
+    @Column(name = "goodsName")
+    private String goodsName;//商品名称
 
     @Column(name = "brandId")
     private Integer brandId;
 
-    @Column(name = "sizeId")
-    private Integer sizeId;
+    @Column(name = "sizeIds")
+    private String sizeIds;//一种商品对应多种规格  id
 
-    @Column(name = "goodsimg")
-    private String goodsimg;
+    @Column(name = "goodsImg")
+    private String goodsImg;
 
     @Column(name = "goodsPrice")
     private String goodsPrice;
@@ -35,28 +33,25 @@ public class Goods {
     @Column(name = "goodsAuditState")
     private Integer goodsAuditState;
 
-    public Integer getGoodsid() {
-        return goodsid;
+    @Column(name = "goodsScript")
+    private String goodsScript;
+    @Column(name = "merchantId")
+    private Integer merchantId;
+
+    public Integer getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoodsid(Integer goodsid) {
-        this.goodsid = goodsid;
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
-    public String getGoodsname() {
-        return goodsname;
+    public String getGoodsName() {
+        return goodsName;
     }
 
-    public void setGoodsname(String goodsname) {
-        this.goodsname = goodsname;
-    }
-
-    public Integer getTypeid() {
-        return typeid;
-    }
-
-    public void setTypeid(Integer typeid) {
-        this.typeid = typeid;
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
     }
 
     public Integer getBrandId() {
@@ -67,20 +62,12 @@ public class Goods {
         this.brandId = brandId;
     }
 
-    public Integer getSizeId() {
-        return sizeId;
+    public String getGoodsImg() {
+        return goodsImg;
     }
 
-    public void setSizeId(Integer sizeId) {
-        this.sizeId = sizeId;
-    }
-
-    public String getGoodsimg() {
-        return goodsimg;
-    }
-
-    public void setGoodsimg(String goodsimg) {
-        this.goodsimg = goodsimg;
+    public void setGoodsImg(String goodsImg) {
+        this.goodsImg = goodsImg;
     }
 
     public String getGoodsPrice() {
@@ -107,18 +94,43 @@ public class Goods {
         this.goodsAuditState = goodsAuditState;
     }
 
+    public String getGoodsScript() {
+        return goodsScript;
+    }
+
+    public void setGoodsScript(String goodsScript) {
+        this.goodsScript = goodsScript;
+    }
+
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
+    public String getSizeIds() {
+        return sizeIds;
+    }
+
+    public void setSizeIds(String sizeIds) {
+        this.sizeIds = sizeIds;
+    }
+
     @Override
     public String toString() {
         return "Goods{" +
-                "goodsid=" + goodsid +
-                ", goodsname='" + goodsname + '\'' +
-                ", typeid=" + typeid +
-                ", brandId=" + brandId +
-                ", sizeId=" + sizeId +
-                ", goodsimg='" + goodsimg + '\'' +
+                "goodsId=" + goodsId +
+                ", goodsName='" + goodsName + '\'' +
+                ", brandIds=" + brandId +
+                ", sizeId=" + sizeIds +
+                ", goodsImg='" + goodsImg + '\'' +
                 ", goodsPrice='" + goodsPrice + '\'' +
                 ", goodsDiscounts='" + goodsDiscounts + '\'' +
                 ", goodsAuditState=" + goodsAuditState +
+                ", goodsScript='" + goodsScript + '\'' +
+                ", merchantId=" + merchantId +
                 '}';
     }
 }

@@ -26,8 +26,17 @@ public class Merchant implements Serializable{
     @Column(name = "merchantMail")
     private String merchantMail;
     @Column(name = "merchantAuditState")
-    private  Integer merchantAuditState;
+    private Integer merchantAuditState;
+    @Column(name = "userid")
+    private Integer userid;
 
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
 
     public Integer getMerchantId() {
         return merchantId;
@@ -113,6 +122,7 @@ public class Merchant implements Serializable{
                 ", merchantName='" + merchantName + '\'' +
                 ", merchantMail='" + merchantMail + '\'' +
                 ", merchantAuditState=" + merchantAuditState +
+                ", userid=" + userid +
                 '}';
     }
 }
