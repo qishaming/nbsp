@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Namespace(value="/syz")
-@ParentPackage("struts-default")
+@ParentPackage("basePackage")
 public class SyzAction extends BaseAction{
 
     @Autowired

@@ -49,23 +49,18 @@
     <ul>
         <li class="active"><i class="icon icon-home"></i> <span>商家管理</span></a>
             <ul>
-                <li><a href="show.jsp">审核商家</a></li>
-                <li><a href="show.jsp">商家信息</a></li>
+                <li><a href="<%=request.getContextPath()%>/jump/shangjiagl.action">审核商家</a></li>
             </ul>
         </li>
-        <li> <a href="#"><i class="icon icon-edit"></i> <span>商品基本数据管理</span></a> </li>
         <%--<li> <i class="icon icon-inbox"></i> <span>基本信息管理</span></a>
             <ul>
                 <li><a href="show.jsp">修改资料</a></li>
                 <li><a href="show.jsp">修改密码</a></li>
             </ul>
         </li>--%>
-        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>分类管理</span></a>
+        <li><a href="<%=request.getContextPath()%>/jump/shangpinpinpail.action"><i class="icon icon-th"></i> <span>品牌管理</span></a>
         </li>
-        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>品牌管理</span></a>
-        </li>
-        <li> <a href="#"><i class="icon icon-signal"></i> <span>类型模板管理</span></a> </li>
-        <li> <a href="#"><i class="icon icon-signal"></i> <span>商品审核</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/shangpingl.action"><i class="icon icon-signal"></i> <span>商品审核</span></a> </li>
     </ul>
 </div>
 

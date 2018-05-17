@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Administrator on 2018/5/10.
  */
 @Namespace(value="/goods")
-@ParentPackage("struts-default")
+@ParentPackage("basePackage")
 public class MerchantAction extends  BaseAction{
     @Autowired
     private MerchantService merchantservice;
