@@ -87,15 +87,16 @@
 
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i>商家管理</a>
     <ul>
-        <li class="active"><i class="icon icon-home"></i> <span>商品管理</span></a>
+        <%--<li class="active"><i class="icon icon-home"></i> <span>商品管理</span></a>
             <ul>
-                <li><a href="<%=request.getContextPath()%>/gyc!queryTree.action">商品录入</a></li>
-                <li><a href="<%=request.getContextPath()%>/test!toShow.action">商品管理</a></li>
+                <li><a href="<%=request.getContextPath()%>/jump/tiao.action">商品录入</a></li>
+                <li><a href="<%=request.getContextPath()%>/jump/tiaoManger.action"></a></li>
             </ul>
-        </li>
-        <li> <a href="#"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
-        <li> <a href="gyc/showRegister.jsp"><i class="icon icon-signal"></i> <span>修改资料</span></a> </li>
-        <li> <a href="gyc/updatePsword.jsp"><i class="icon icon-signal"></i> <span>修改密码</span></a> </li>
+        </li>--%>
+        <li> <a href="<%=request.getContextPath()%>/jump/tiao.action"><i class="icon icon-signal"></i> <span>商品管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/tiaoPinpai.action"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/info.action"><i class="icon icon-signal"></i> <span>信息管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/updatePass.action"><i class="icon icon-signal"></i> <span>修改密码</span></a> </li>
 
         <li><a href="<%=request.getContextPath()%>/jpl/bb.action"><i class="icon icon-th"></i> <span>数据分析</span></a>
 
