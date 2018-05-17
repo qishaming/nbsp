@@ -1,6 +1,7 @@
 package com.jk.service.Impl;
 
 import com.jk.dao.LoginDao;
+import com.jk.pojo.Merchant;
 import com.jk.pojo.User;
 import com.jk.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class LoginServiceImpl implements LoginService{
         User user=loginDao.querylogin(username);
        /* int loginFlag=0;*/
         if(user!=null){
+            System.out.print(user.getUserid());
+                Merchant  merchant= loginDao.queryMerchant(user.getUserid());
+                map.put("merchant",merchant);
             if(password.equals(user.getPassword())){
                 if(validataCode.equalsIgnoreCase(sessionCode)){
                     if(user.getUserstate()==1){

@@ -1,4 +1,5 @@
 package com.jk.action;
+import com.jk.pojo.Merchant;
 import com.jk.pojo.User;
 import com.jk.service.LoginService;
 import com.jk.util.ValidateCodeUtil;
@@ -111,6 +112,7 @@ public class LoginAction extends BaseAction{
             String sessionCode = ServletActionContext.getRequest().getSession().getAttribute("code").toString();
             map=loginService.login(username,password,validataCode,sessionCode);
             String mas = (String) map.get("mas");
+
             int loginFlag=1;
             if(mas=="errorcode"){
                 loginFlag=4;
@@ -118,9 +120,11 @@ public class LoginAction extends BaseAction{
             }
             //暂时无用，用于主页面注销使用
             User user = (User) map.get("user");
+            Merchant merchant= (Merchant) map.get("merchant");
+            ServletActionContext.getRequest().getSession().setAttribute("merchant",merchant);
             if(user!=null){
-                //HttpServletRequest request= ServletActionContext.getRequest();
-                ServletActionContext.getRequest().getSession().setAttribute("userstate",user.getUserstate());
+                //HttpServletRequest request= ServletActionContext.getRequest();get
+                ServletActionContext.getRequest().getSession().setAttribute("user",user);
                 ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
             }
             super.writeJson(mas);
