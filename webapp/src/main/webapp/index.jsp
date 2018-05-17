@@ -57,11 +57,8 @@
         <li> <a href="gyc/showRegister.jsp"><i class="icon icon-signal"></i> <span>修改资料</span></a> </li>
         <li> <a href="gyc/updatePsword.jsp"><i class="icon icon-signal"></i> <span>修改密码</span></a> </li>
 
-        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>财务状况</span></a>
-            <ul>
-                <li><a href="show.jsp">收入</a></li>
-                <li><a href="show.jsp">支出</a></li>
-            </ul>
+        <li><a href="<%=request.getContextPath()%>/jpl/bb.action"><i class="icon icon-th"></i> <span>数据分析</span></a>
+
         </li>
         <li> <a href="#"><i class="icon icon-tag"></i> <span>订单详情</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/jpl/aa.action"><i class="icon icon-tags"></i> <span>库存管理</span></a> </li>
