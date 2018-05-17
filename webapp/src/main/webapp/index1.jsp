@@ -66,6 +66,7 @@
         </li>
         <li> <a href="#"><i class="icon icon-signal"></i> <span>类型模板管理</span></a> </li>
         <li> <a href="#"><i class="icon icon-signal"></i> <span>商品审核</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/showRizhi.jsp"><i class="icon icon-signal"></i> <span>日志管理</span></a> </li>
     </ul>
 </div>
 
