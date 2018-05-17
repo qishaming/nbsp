@@ -14,8 +14,7 @@ public class GoodsSzie {
     @Column(name = "goodsSizeName")
     private String goodsSizeName;
 
-    @Column(name = "smallTypeId")
-    private Integer smallTypeId;
+
 
     public Integer getGoodsSizeId() {
         return goodsSizeId;
@@ -33,20 +32,11 @@ public class GoodsSzie {
         this.goodsSizeName = goodsSizeName;
     }
 
-    public Integer getSmallTypeId() {
-        return smallTypeId;
-    }
-
-    public void setSmallTypeId(Integer smallTypeId) {
-        this.smallTypeId = smallTypeId;
-    }
-
     @Override
     public String toString() {
         return "GoodsSzie{" +
                 "goodsSizeId=" + goodsSizeId +
                 ", goodsSizeName='" + goodsSizeName + '\'' +
-                ", smallTypeId=" + smallTypeId +
                 '}';
     }
 }

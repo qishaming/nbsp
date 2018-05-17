@@ -18,8 +18,8 @@ public class Goods{
     @Column(name = "brandId")
     private Integer brandId;
 
-    @Column(name = "sizeIds")
-    private String sizeIds;//一种商品对应多种规格  id
+    @Column(name = "sizeId")
+    private Integer sizeId;//一种商品对应多种规格  id
 
     @Column(name = "goodsImg")
     private String goodsImg;
@@ -37,6 +37,8 @@ public class Goods{
     private String goodsScript;
     @Column(name = "merchantId")
     private Integer merchantId;
+    @Column(name = "smallTypeId")
+    private Integer smallTypeId;
 
     public Integer getGoodsId() {
         return goodsId;
@@ -110,27 +112,7 @@ public class Goods{
         this.merchantId = merchantId;
     }
 
-    public String getSizeIds() {
-        return sizeIds;
-    }
 
-    public void setSizeIds(String sizeIds) {
-        this.sizeIds = sizeIds;
-    }
 
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "goodsId=" + goodsId +
-                ", goodsName='" + goodsName + '\'' +
-                ", brandIds=" + brandId +
-                ", sizeId=" + sizeIds +
-                ", goodsImg='" + goodsImg + '\'' +
-                ", goodsPrice='" + goodsPrice + '\'' +
-                ", goodsDiscounts='" + goodsDiscounts + '\'' +
-                ", goodsAuditState=" + goodsAuditState +
-                ", goodsScript='" + goodsScript + '\'' +
-                ", merchantId=" + merchantId +
-                '}';
-    }
+
 }
