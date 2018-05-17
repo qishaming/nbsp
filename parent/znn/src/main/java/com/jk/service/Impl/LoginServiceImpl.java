@@ -1,11 +1,12 @@
 package com.jk.service.Impl;
 
 import com.jk.dao.LoginDao;
-import com.jk.pojo.User;
+import com.jk.pojo.Merchant;
 import com.jk.service.LoginService;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.jk.pojo.User;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,4 +57,42 @@ public class LoginServiceImpl implements LoginService{
         map.put("mas", mas);
         return map;
     }
+
+
+    @Override
+    public void addzhuces(String username,String password,String phone) {
+        /*System.out.println(username+"-------------");
+        System.out.println(password+"-------------");
+*/
+        User user =new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUserphone(phone);
+        user.setUserstate(1);
+       /* System.out.println(user+"-------------");*/
+        loginDao.addzhuces(user);
+    }
+
+    @Override
+    public User  queryMerchantIdByPhone(String phone) {
+        return loginDao.queryMerchantIdByPhone(phone);
+    }
+
+    @Override
+    public void addMerchant(Merchant merchant) {
+        loginDao.addMerchant(merchant);
+    }
+
+    @Override
+    public void addzhuces1(String username, String password, String phone) {
+        User user =new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUserphone(phone);
+        user.setUserstate(2);
+       /* System.out.println(user+"-------------");*/
+        loginDao.addzhuces1(user);
+    }
+
+
 }
