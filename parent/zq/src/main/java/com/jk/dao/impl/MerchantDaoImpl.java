@@ -34,4 +34,10 @@ public class MerchantDaoImpl implements MerchantDao {
     public void updateErre(String hql) {
         sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
     }
+
+
+
+
+
+
 }

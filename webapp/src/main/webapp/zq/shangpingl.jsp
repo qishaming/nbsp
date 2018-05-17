@@ -18,14 +18,32 @@
     <link href="<%=request.getContextPath() %>/zq/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title> Admin</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="css/fullcalendar.css" />
-    <link rel="stylesheet" href="css/maruti-style.css" />
-    <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="../css/fullcalendar.css" />
+    <link rel="stylesheet" href="../css/maruti-style.css" />
+    <link rel="stylesheet" href="../css/maruti-media.css" class="skin-color" />
 </head>
 <body>
-
+<script src="<%=request.getContextPath() %>/zq/js/jquery.min.js"></script>
+<!-- bootstrap 核心js文件 -->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap/js/bootstrap.min.js"></script>
+<!-- bootStrap TreeView -->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+<!-- bootStrap addTabs -->
+<script src="<%=request.getContextPath() %>/zq/js/bootStrap-addTabs/bootstrap.addtabs.js"></script>
+<!-- bootStrap table -->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-table/dist/bootstrap-table.js"></script>
+<!-- bootStrap table 语言包中文-->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<!-- bootstrap-datetimepicker -->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!-- bootstrap-dialog -->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-dialog/dist/js/bootstrap-dialog.js"></script>
+<!-- bootstrap-fileinput -->
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-fileinput/js/fileinput.js"></script>
+<script src="<%=request.getContextPath() %>/zq/js/bootstrap-fileinput/js/locales/zh.js"></script>
 <%--  hello
   <a href="<%=request.getContextPath()%>/test!toShow.action?id=1"> tiao</a>--%>
 
@@ -102,7 +120,7 @@
 
                     </div>
 
-
+                    <table class="table" id="goods" border="1"></table>
 
                     <div class="widget-content nopadding">
                         <table class="table table-bordered data-table">
@@ -120,6 +138,116 @@
     <div id="footer" class="span12"> 2012 &copy; Marutii Admin. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a> </div>
 </div>
 <script type="text/javascript">
+
+
+    $("#goods").bootstrapTable({
+        url:"<%=request.getContextPath()%>/goods/queryGoodss.action",
+        pagination: true,                   //是否显示分页（*）
+        sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+        pageSize: 3,                     //每页的记录行数（*）
+        pageList: [1, 2, 4, 5],        //可供选择的每页的行数（*）
+        search: true,                      //是否显示表格搜索
+        showColumns: true,                  //是否显示所有的列（选择显示的列）
+        showRefresh: true,                  //是否显示刷新按钮
+        clickToSelect: true,                //是否启用点击选中行
+        uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+        columns:[[
+            {field:'goodsid', title:'编号', idField:true,  width:10 },
+            {field:'customerName', title:'商家', width:10 },
+            {field:'goodsname', title:'商品', width:10 },
+            {field:'goodsSizeName', title:'商品规格', width:10 },
+            {field:'brandName', title:'商品品牌', width:10 },
+            {field:'goodsimg', title:'商品图片', width:10,
+                formatter: function(value,row,index){
+                    var path ="";
+
+                    var path='<img src="'+value+'" width="70px">';
+                    return path;
+
+
+                }
+
+
+            },
+
+            {field:'goodsPrice', title:'商品价格', width:10 },
+            {field:'goodsDiscounts', title:'商品折扣价', width:10 },
+            {field:'goodsAuditState', title:'商品状态', width:10,
+                formatter: function(value,row,index){
+                    if(value=="1") {
+                        return "未提交";
+                    }if(value=="2"){
+                        return "待审核";
+                    }if(value=="3"){
+                        return "已通过";
+
+                    }if(value=="4") {
+                        return "已下架";
+
+
+                    }}
+            },
+            {field:'goodsSizeName', title:'规格', width:10},
+            {field:'brandAuditState', title:'品牌状态', width:10,
+                formatter: function(value,row,index){
+                    if(value=="0") {
+                        return "未审核";
+                    }if(value=="2"){
+                        return "审核成功";
+                    }if(value=="1"){
+                        return "驳回";
+
+                    }}
+            },
+            {field:'hhh', title:'操作', width:10,
+                formatter:function(value,row,index) {
+                    if (row.goodsAuditState == 2) {
+
+                        return '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updatesuccgoods(' + row.goodsid + ')">审核成功</button>' +
+                                '<button type="button" class="btn btn-danger" class="btn btn-primary"   onclick="errerGoods(' + row.goodsid + ')" >驳回</button>';
+                    }else {
+                        return "";
+                    }
+
+                }}
+        ]]
+    });
+    function updatesuccgoods(goodsid){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/goods/updateGoodsSuccess.action",
+            dataType:"text",
+            type:"post",
+            data:{"goodsid":goodsid},
+            success:function(data){
+
+
+                $('#goods').bootstrapTable('refresh');
+            }
+        })
+    }
+
+    function errerGoods(goodsid){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/goods/updateGoodsErrer.action",
+            dataType:"text",
+            type:"post",
+            data:{"goodsid":goodsid},
+            success:function(data){
+
+
+                $('#goods').bootstrapTable('refresh');
+            }
+        })
+    }
+
+
+
+
+
+
+
+
 
 
 
