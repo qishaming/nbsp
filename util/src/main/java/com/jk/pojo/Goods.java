@@ -112,7 +112,36 @@ public class Goods{
         this.merchantId = merchantId;
     }
 
+    public Integer getSizeId() {
+        return sizeId;
+    }
 
+    public void setSizeId(Integer sizeId) {
+        this.sizeId = sizeId;
+    }
 
+    public Integer getSmallTypeId() {
+        return smallTypeId;
+    }
 
+    public void setSmallTypeId(Integer smallTypeId) {
+        this.smallTypeId = smallTypeId;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "goodsId=" + goodsId +
+                ", goodsName='" + goodsName + '\'' +
+                ", brandId=" + brandId +
+                ", sizeId=" + sizeId +
+                ", goodsImg='" + goodsImg + '\'' +
+                ", goodsPrice='" + goodsPrice + '\'' +
+                ", goodsDiscounts='" + goodsDiscounts + '\'' +
+                ", goodsAuditState=" + goodsAuditState +
+                ", goodsScript='" + goodsScript + '\'' +
+                ", merchantId=" + merchantId +
+                ", smallTypeId=" + smallTypeId +
+                '}';
+    }
 }
