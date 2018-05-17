@@ -13,4 +13,7 @@ public interface MerchantDao {
     void updateSucces(String hql);
 
     void updateErre(String hql);
+
+
+
 }

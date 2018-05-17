@@ -33,4 +33,9 @@ public class MerchantServiceImpl implements MerchantService {
         String hql="update Merchant set merchantAuditState=1 where merchantId="+merchantId;
         merchantDao.updateErre(hql);
     }
+
+
+
+
+
 }

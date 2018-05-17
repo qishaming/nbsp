@@ -19,6 +19,24 @@ public class MerchantAction extends  BaseAction{
     private MerchantService merchantservice;
     private Merchant me=new Merchant();
     private Integer   merchantId;
+    private Integer brandId;
+    private Integer goodsSizeId;
+
+    public Integer getGoodsSizeId() {
+        return goodsSizeId;
+    }
+
+    public void setGoodsSizeId(Integer goodsSizeId) {
+        this.goodsSizeId = goodsSizeId;
+    }
+
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
 
     public Merchant getMe() {
         return me;
@@ -70,4 +88,14 @@ public class MerchantAction extends  BaseAction{
         super.writeJson("updategoods");
 
     }
-}
+
+
+
+
+
+    }
+
+
+
+
+

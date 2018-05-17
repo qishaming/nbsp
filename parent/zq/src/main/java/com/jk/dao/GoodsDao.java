@@ -2,6 +2,13 @@ package com.jk.dao;
 
 
 
+
+import com.jk.pojo.Brand;
+import com.jk.pojo.Goods;
+import com.jk.pojo.GoodsSzie;
+import com.jk.pojo.Repertory;
+
+
 import java.util.List;
 
 /**
@@ -10,18 +17,41 @@ import java.util.List;
 public interface GoodsDao {
 
 
- /*   List queryGoods();
+
+  List queryGoodss();
 
     void delteGoods(Integer goodsid);
 
-    List<Gg> queryGg();
+
+
+  List<Brand> queryBrand();
+
+  List<GoodsSzie> queryGoodsSzie();
+
+
+
+
+  List queryGoodsPin();
+
+  void updateGoodsPinSuccess(String hql);
+
+  void updateGoodsPinEree(String hql);
+
+  void updateGoodsErrer(String hql);
+
+  void updateGoodsSuccess(String hql);
+
+  void addRr(Repertory rr);
+
+
+
+
+
+    /*  List<Gg> queryGg();
 
     List<Type> queryType();
 
     List<Pp> queryPp();
 
-    Goods hxGoods(String hql);
-
-
-    void updateGoods(Goods goods);*/
+    Goods hxGoods(updategoods);*/
 }

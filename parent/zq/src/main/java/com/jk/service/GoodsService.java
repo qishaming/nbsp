@@ -1,28 +1,42 @@
 package com.jk.service;
 
 
+import com.jk.pojo.Brand;
+import com.jk.pojo.Goods;
+import com.jk.pojo.GoodsSzie;
+
+import com.jk.pojo.Repertory;
 import org.hibernate.mapping.List;
 
 /**
  * Created by Administrator on 2018/5/8.
  */
 public interface GoodsService {
- /*   java.util.List queryGoods();
-
-    void delteGoods(Integer goodsid);
-
-    java.util.List<com.jk.pojo.Gg> queryGg();
-
-    java.util.List<com.jk.pojo.Type> queryType();
-
-    java.util.List<com.jk.pojo.Pp> queryPp();
-
-    Goods hxGoods(Integer goodsid);
-
-    void updateGoods(Goods goods);*/
+    java.util.List queryGoodss();
 
 
 
 
-  /*  List queryGoods();*/
+    java.util.List<Brand> queryBrand();
+
+    java.util.List<GoodsSzie> queryGoodsSzie();
+
+
+
+
+    java.util.List queryGoodsPin();
+
+
+
+    void updateGoodsPinSuccess(Integer brandId);
+
+    void updateGoodsPinEree(Integer brandId);
+
+    void updateGoodsErrer(Integer goodsid);
+
+    void updateGoodsSuccess(Integer goodsid);
+
+    void addRr(Repertory rr);
+
+
 }
