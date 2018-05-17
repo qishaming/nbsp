@@ -2,9 +2,11 @@ package com.jk.action;
 
 import com.jk.pojo.Goods;
 import com.jk.pojo.Repertory;
+import com.jk.pojo.User;
 import com.jk.service.testService;
 import com.jk.util.ExportExcel;
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -37,8 +39,9 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
      */
     @Action(value = "queryRepertory")
     public void queryRepertory(){
+        User u = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
         //request.getSession().getAttribute("");
-        List list = service.queryRepertory();
+        List list = service.queryRepertory(u);
         for (int i=0;i<list.size();i++){
             System.out.println("这是返回值"+list.get(i));
         }
@@ -109,7 +112,8 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
 
     @Action(value = "poiExcel")
     public void poiExcel(){
-        List list = service.queryRepertoryExcel();
+        User u = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
+        List list = service.queryRepertoryExcel(u);
         //设置表头
         String[] rowName = {"库存编号","修改时间","库存数量","商品名称","商品类型","商品品牌","商品规格","商品价格"};
         List<Object[]> dataList=new ArrayList<Object[]>();

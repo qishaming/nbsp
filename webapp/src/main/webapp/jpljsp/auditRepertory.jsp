@@ -177,10 +177,7 @@
             {
                 field:'repertoryNumber',
                 title:'库存数量',
-                width:100,align:'center',
-                formatter: function(value,row,index){
-                    return "<input type='button' value='-'  onclick='jian("+value+")'/>"+value+"<input type='button' value='+'  onclick='jia("+value+")'/>";
-                }
+                width:100,align:'center'
             },{
                 field:'goodsname',
                 title:'商品名称',

@@ -2,12 +2,13 @@ package com.jk.dao;
 
 import com.jk.pojo.Goods;
 import com.jk.pojo.Repertory;
+import com.jk.pojo.User;
 
 import java.util.List;
 
 public interface testDao {
     List queryAll();
-    List queryRepertory();
+    List queryRepertory(User u);
 
     Repertory queryCountById(Integer repertoryId);
 
@@ -18,5 +19,5 @@ public interface testDao {
 
     void updatedRepertory(Repertory repertory);
 
-    List queryRepertoryExcel();
+    List queryRepertoryExcel(User u);
 }

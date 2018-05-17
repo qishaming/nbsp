@@ -3,6 +3,7 @@ package com.jk.service.impl;
 import com.jk.dao.testDao;
 import com.jk.pojo.Goods;
 import com.jk.pojo.Repertory;
+import com.jk.pojo.User;
 import com.jk.service.testService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ public class testServiceImpl implements testService {
     }
 
     @Override
-    public List queryRepertory() {
-        return dao.queryRepertory();
+    public List queryRepertory(User u) {
+        return dao.queryRepertory(u);
     }
 
     @Override
@@ -49,8 +50,8 @@ public class testServiceImpl implements testService {
     }
 
     @Override
-    public List queryRepertoryExcel() {
-        return dao.queryRepertoryExcel();
+    public List queryRepertoryExcel(User u) {
+        return dao.queryRepertoryExcel(u);
     }
 
 

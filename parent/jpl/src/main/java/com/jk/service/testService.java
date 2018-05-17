@@ -2,13 +2,14 @@ package com.jk.service;
 
 import com.jk.pojo.Goods;
 import com.jk.pojo.Repertory;
+import com.jk.pojo.User;
 
 import java.util.List;
 
 public interface testService {
     List queryAll();
 
-    List queryRepertory();
+    List queryRepertory(User u);
 
 
     Repertory queryCountById(Integer repertoryId);
@@ -21,5 +22,5 @@ public interface testService {
 
     void updatedRepertory(Repertory repertory);
 
-    List queryRepertoryExcel();
+    List queryRepertoryExcel(User u);
 }

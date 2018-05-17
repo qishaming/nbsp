@@ -3,6 +3,7 @@ package com.jk.dao.impl;
 import com.jk.dao.testDao;
 import com.jk.pojo.Goods;
 import com.jk.pojo.Repertory;
+import com.jk.pojo.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,15 @@ public class testDaoImpl implements testDao {
     }
 
     @Override
-    public List queryRepertory() {
-        StringBuffer sql=new StringBuffer("SELECT pr.repertoryId,pr.repertoryUpdateTime,pr.repertoryNumber,pg.*,pb.brandName,pst.smallTypeName,pgs.goodsSizeName FROM 6month.pyg_repertory pr " +
-                "LEFT JOIN 6month.pyg_goods pg ON pr.goodsid=pg.goodsid " +
-                "LEFT JOIN 6month.pyg_brand pb ON pb.brandId=pg.brandId " +
-                "LEFT JOIN 6month.pyg_goodssize pgs ON pgs.goodsSizeId=pg.sizeId " +
-                "LEFT JOIN 6month.pyg_smalltype pst ON pgs.smallTypeId=pgs.smallTypeId");
+    public List queryRepertory(User u) {
+        StringBuffer sql=new StringBuffer("SELECT pr.repertoryId,pr.repertoryUpdateTime,pr.repertoryNumber,pg.*,pb.brandName,pgs.goodsSizeName,pst.smallTypeName FROM 6month.pyg_repertory pr " +
+                "                LEFT JOIN 6month.pyg_goods pg ON pr.goodsid=pg.goodsid " +
+                "                LEFT JOIN 6month.pyg_brand pb ON pb.brandId=pg.brandId " +
+                "                LEFT JOIN 6month.pyg_goodssize pgs ON pgs.goodsSizeId=pg.sizeId " +
+                "                LEFT JOIN 6month.pyg_smalltype pst ON pst.smallTypeId=pg.smallTypeId" +
+                "                LEFT JOIN 6month.pyg_merchant pm ON pm.merchantId=pg.merchantId" +
+                "                LEFT JOIN 6month.user u ON u.userid=pm.userid " +
+                "                WHERE u.userid="+u.getUserid());
         List list = sessionFactory.openSession().createSQLQuery(sql.toString()).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
         return list ;
     }
@@ -64,12 +68,15 @@ public class testDaoImpl implements testDao {
     }
 
     @Override
-    public List queryRepertoryExcel() {
+    public List queryRepertoryExcel(User u) {
         StringBuffer sql=new StringBuffer("SELECT pr.repertoryId,pr.repertoryUpdateTime,pr.repertoryNumber,pg.goodsname,pst.smallTypeName,pb.brandName,pgs.goodsSizeName,pg.goodsPrice FROM 6month.pyg_repertory pr "
                 +"LEFT JOIN 6month.pyg_goods pg ON pr.goodsId=pg.goodsId "
                 +"LEFT JOIN 6month.pyg_brand pb ON pb.brandId=pg.brandId "
-                +"LEFT JOIN 6month.pyg_goodssize pgs ON pgs.goodsSizeId=pg.sizeId"
-                +"LEFT JOIN 6month.pyg_smalltype pst ON pgs.smallTypeId=pst.smallTypeId");
+                +"LEFT JOIN 6month.pyg_goodssize pgs ON pgs.goodsSizeId=pg.sizeId "
+                +"LEFT JOIN 6month.pyg_smalltype pst ON pg.smallTypeId=pst.smallTypeId"+
+                "                LEFT JOIN 6month.pyg_merchant pm ON pm.merchantId=pg.merchantId" +
+                        "                LEFT JOIN 6month.user u ON u.userid=pm.userid " +
+                        "                WHERE u.userid="+u.getUserid());
         List list = sessionFactory.getCurrentSession().createSQLQuery(sql.toString()).list();
         return list;
     }
