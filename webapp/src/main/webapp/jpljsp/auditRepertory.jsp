@@ -186,7 +186,7 @@
                 title:'商品名称',
                 width:100,align:'center'
             },{
-                field:'goodstypename',
+                field:'smallTypeName',
                 title:'类型名称',
                 width:100,align:'center'
             },{
