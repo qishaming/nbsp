@@ -7,7 +7,7 @@
     <title>运营商管理后台</title>
     <!-- jquery -->
     <script type="text/javascript" src="<%=path %>/js/jquery-3.2.1/jquery-3.2.1.js"></script>
-    <jsp:include page="base.jsp"></jsp:include>
+    <jsp:include page="../base.jsp"></jsp:include>
     <link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<%=path%>/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="<%=path%>/css/fullcalendar.css" />

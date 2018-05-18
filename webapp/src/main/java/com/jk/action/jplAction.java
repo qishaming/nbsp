@@ -60,16 +60,7 @@ public class jplAction extends BaseAction /*implements ModelDriven<Repertory>*/{
         return  "bb";
     }
 
-    /**
-     * 这是跳转到auditRepertory.jsp页面的方法
-     * @return
-     */
-    @Action(value = "bb",results = {
-            @Result(name = "cc",location = "/jpljsp/showData.jsp")
-    })
-    public String jumpShowData(){
-        return  "cc";
-    }
+
 
 
     /**
