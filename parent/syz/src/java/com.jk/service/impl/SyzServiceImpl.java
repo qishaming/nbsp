@@ -60,5 +60,10 @@ public class SyzServiceImpl implements SyzService{
         return syzDao.queryGoods(merchantId);
     }
 
+    @Override
+    public void submitgoods(Integer goodsid) {
 
+      syzDao.submitgoods(goodsid);
+
+    }
 }

@@ -228,14 +228,7 @@
                     }
                 }
 
-            },
-            {field:'hhh', title:'操作', width:20,
-                formatter:function(value,row,index){
-                    return  '<button  class="btn btn-primary"  data-toggle="modal" data-target="#myModal1" onclick="updateyy('+row.goodsid+')">修改商品</button>' +
-                        '<button type="button" class="btn btn-danger"  onclick="delxinwen('+row.goodsid+')" >删除该商品</button>';
-
-
-                }}
+            }
 
         ]]
     });

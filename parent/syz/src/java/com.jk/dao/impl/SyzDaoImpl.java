@@ -75,6 +75,11 @@ public class SyzDaoImpl implements SyzDao {
         List list= SessionFactory.openSession().createSQLQuery(hql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
         return list;
     }
+    public void submitgoods(Integer goodsid) {
+        String hql="UPDATE pyg_goods SET goodsAuditState=2 where goodsid="+goodsid;
+        SessionFactory.openSession().createSQLQuery(hql).executeUpdate();
+
+    }
 
 }
 

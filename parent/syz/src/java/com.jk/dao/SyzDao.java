@@ -25,4 +25,6 @@ public interface SyzDao {
     List<GoodsSzie> querySize();
 
     List queryGoods(Integer merchantId);
+
+    void submitgoods(Integer goodsid);
 }

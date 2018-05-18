@@ -161,7 +161,7 @@
             },
             {field:'hhh', title:'操作', width:10,
                 formatter:function(value,row,index){
-                    return  '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updateSuccess('+row.merchantId+')">审核成功</button><button type="button" class="btn btn-danger"  onclick="delteMerchant('+row.merchantId+')" >删除</button><button type="button" class="btn btn-primary"  onclick="updateErre('+row.merchantId+')" >驳回</button>';
+                    return  '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updateSuccess('+row.merchantId+')">审核</button><button type="button" class="btn btn-danger"  onclick="delteMerchant('+row.merchantId+')" >删除</button><button type="button" class="btn btn-primary"  onclick="updateErre('+row.merchantId+')" >驳回</button>';
 
 
                 }}

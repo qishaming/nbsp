@@ -1,0 +1,219 @@
+.clear_float {
+	clear: both;
+	height: 0;
+	overflow: hidden;
+	font-size: 0;
+	line-height: 0;
+}
+/* .content */
+#content {
+	border: 1px solid #dddddd;
+	width: 958px;
+	margin: 10px auto 0;
+}
+#content h1 {
+	border-bottom: 1px solid #dddddd;
+	height: 31px;
+	line-height: 31px;
+	font-weight: bold;
+	text-indent: 10px;
+	background: url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) repeat-x 0 -142px;
+}
+/* end .content */
+
+.sign_ct {
+	padding: 15px 0 15px 120px;
+	width: 838px;
+}
+
+.wrap_login_form {
+	float: left;
+}
+
+* html .wrap_login_form {
+	width: 371px;
+}
+
+/* .sign_in_form_box */
+#sign_in_form_box_popup {
+	width: 0;
+	width: auto;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.sign_tip {
+	margin-left: 56px;
+	padding-top: 10px;
+}
+
+.sign_fm .item {
+	font-size: 14px;
+	height: 0;
+	height: auto;
+	line-height: 0;
+	line-height: normal;
+	margin-top: 25px;
+}
+.sign_fm .first_item {
+	margin-top: 10px;
+}
+.sign_fm .ri1_item {
+	height: 16px;
+}
+
+.sign_fm .item label {
+	font-family: \5B8B\4F53, sans-serif;
+}
+
+.sign_fm #account_pop,
+.sign_fm #actpwd_pop {
+	width: 246px;
+	height: 23px;
+	line-height: 23px;
+	font-size: 14px;
+	border: 2px solid #dddddd;
+}
+
+.sign_fm .set_overflow {
+	height: 42px;
+	padding: 0;
+}
+
+a.sign_lostfound {
+	font-size: 12px;
+}
+
+#rem_it_1w_pop {
+	margin-left: 4em;
+	font-size: 14px;
+}
+
+.ri1_label {
+	vertical-align: -2px;
+	padding-left: 30px;
+	margin-left: -27px;
+}
+* html .ri1_label {
+	vertical-align: 0;
+}
+*:first-child + html {
+	vertical-align: 0;
+}
+
+.btn_sign_in {
+	background: url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) no-repeat 0 -58px;
+	width: 120px;
+	height: 42px;
+	border: 0;
+	margin: 0 0 0 4em;
+	font-size: 14px;
+}
+.bsi_hover {
+	background-position: 0 -100px;
+}
+
+.wait4sign {
+	font-size: 14px;
+	margin: 0 0 0 4em;
+}
+* html span.wait4sign {
+	margin-left: 2em; /* ie 6 hack */
+}
+.wait4sign img {
+	margin-top: 0;
+}
+* html .wait4sign img {
+	margin-top: -1px;
+}
+*:first-child + html .wait4sign img {
+	margin-top: 0;
+}
+/* end .sign_in_form_box */
+
+/*.quick_signin */
+.quick_signin {
+	margin-top: 30px;
+	border-top: 1px dashed #dddddd;
+	padding-top: 10px;
+	font-size: 14px;
+	padding-left: 4em;
+}
+.quick_signin p {
+	line-height: 20px;
+	font-size: 12px;
+}
+.qs_icons {
+	overflow: hidden;
+	padding-top: 8px;
+}
+.qs_icons .sp_st{
+	padding-left:20px;
+	line-height:20px;
+	float:left;	
+	font-size:12px;
+}
+.qs_icons .sp_zfb{
+	background:url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) 0 -228px no-repeat;
+}
+.qs_icons .sp_front a {
+	border-right:1px solid #DDDDDD;
+	padding-right:5px;
+	margin-right:10px;
+}
+.qs_icons .sp_baidu{
+	background:url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) 0 -254px no-repeat;
+}
+.qs_icons .sp_xinl{
+	background:url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) 0 -274px no-repeat;
+}
+.qs_icons .sp_qq{
+	background:url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) 0 -294px no-repeat;
+}
+* html .qs_icons {
+	height: 1%;
+}
+.quick_signin .mate_zfb {
+	float: left;
+}
+* html .quick_signin .mate_zfb {
+	display: inline;
+}
+.qs_icons img {
+	display: block;
+}
+/* end*/
+
+/* .signUpBox */
+.signUpBox {
+	float: left;
+	width: 275px;
+	margin-left: 130px;
+	/* height: 243px; */
+	height: 372px;
+	border-left: 1px dashed #dddddd;
+	padding-left: 30px;
+}
+* html .signUpBox {
+	display: inline;
+}
+.signUpBox h2 {
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 65px;
+}
+.signUpBox p {
+	margin-top: 10px;
+	color: #666666;
+}
+.signUpBox .sign_up {
+	display: block;
+	width: 107px;
+	height: 29px;
+	margin: 20px auto 0;
+	background: url(http://img1.40017.cn/cn/new_ui/public/images/3439/new_bg.png?v=520) no-repeat 0 0;
+}
+.signUpBox .su_hover {
+	background-position: 0 -29px;
+}
+/* end .signUpBox */

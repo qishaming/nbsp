@@ -1,0 +1,69 @@
+﻿/* --创建：徐建中2010,10,17/最后修改：胡竟荣 2011,02,26/牛提罚2011.09.20--*/
+/* 重置浏览器默认样式 */
+html, body, div, h1, h2, h3, h4, h5, h6, p, a, span,
+ul, ol, li, dl, dt, dd,
+form, fieldset, legend, label, input, select, textarea, button,
+table, caption, thead, tbody, tfoot, tr, th, td,
+abbr, acronym, address, cite, code, del, ins, dfn, em, strong, sub, sup, kbd, samp, tt, var, pre, blockquote, q {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	font-size: 12px;
+	background: #ffffff;
+	color: #333333;     
+	font-family: Arial, \5B8B\4F53, sans-serif; /*"\5B8B\4F53"为宋体*/
+	line-height:1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 14px;
+}
+
+/* 14px、12px 字体的行高 line-height: 1.6 是 24px、20px */
+
+caption, th {
+	text-align: left;
+}
+
+/* 务必在 table 标签属性中加 cellspacing="0"，这是表格在IE 6 中跨浏览器兼容性处理的唯一方式 */
+table {
+	border-collapse:collapse;
+	border-spacing: 0;
+}
+fieldset, img {
+	border: 0;
+}
+input,select,textarea{
+	/* border:0; */
+	vertical-align:middle;
+	font-size:12px;
+	outline:none;
+	/* font-family: \5B8B\4F53, sans-serif; */
+}
+.input_number {
+	font-family: Arial, sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+
+/*全局<a>标签*/
+a {
+	color: #005bb5;
+	text-decoration: none;
+}
+a:hover{
+	color: #ff6600;
+}
+a:focus{
+}
+a:hover {
+	text-decoration: underline;
+}
+
+
+/* end 重置浏览器默认样式over */

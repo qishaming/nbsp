@@ -115,6 +115,12 @@ public class SyzAction extends BaseAction{
         super.writeJson("Success");
 
     }
+    @Action(value="/submitgoods")
+    public void submitgoods(){
+        syzService.submitgoods(goodsid);
+        super.writeJson("Success");
+
+    }
     //上传图片
     @Action("/scwj")
     public void scwj(){

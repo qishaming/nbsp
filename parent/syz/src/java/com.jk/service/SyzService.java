@@ -26,4 +26,6 @@ public interface SyzService {
     List<GoodsSzie> querySize();
 
     List queryGoods(Integer merchantId);
+
+    void submitgoods(Integer goodsid);
 }

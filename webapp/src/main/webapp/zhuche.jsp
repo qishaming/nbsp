@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 张娜娜
+  Date: 2018-5-10
+  Time: 9:40
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%String path = request.getContextPath(); %>
@@ -155,7 +162,7 @@
 						<div class="main_input_box">
 							<span class="add-on bg_lg">
 							<i>账号</i>
-							</span><input type="text"  name="username" id="USERNAME" value="" placeholder="请输入账号名" />
+							</span><input type="text"  name="user.username" id="USERNAME" value="" placeholder="请输入账号名" />
 						</div>
 					</div>
 				</div>
@@ -164,7 +171,7 @@
 						<div class="main_input_box">
 							<span class="add-on bg_ly">
 							<i>密码</i>
-							</span><input type="password"  name="password" id="PASSWORD" placeholder="请输入密码" class="keypad" keypadMode="full" allowKeyboard="true" value=""/>
+							</span><input type="password"  name="user.password" id="PASSWORD" placeholder="请输入密码" class="keypad" keypadMode="full" allowKeyboard="true" value=""/>
 						</div>
 					</div>
 				</div>
@@ -173,7 +180,7 @@
 						<div class="main_input_box">
 							<span class="add-on bg_lg">
 							<i>电话</i>
-							</span><input type="text"  name="userphone" id="phone" value="" placeholder="请输入手机号" />
+							</span><input type="text"  name="user.userphone" id="userPhone" value="" placeholder="请输入手机号" />
 						</div>
 					</div>
 				</div>
@@ -183,9 +190,10 @@
 						<div class="main_input_box">
 							<span class="add-on bg_lg">
 							<i>验证</i>
-							</span><input type="text"  name="checkcode"  placeholder="请输入收到的验证码"> 
-									<button  type="button" class="easyui-linkbutton" id="anniu" onclick="fasongyz()">发送验证码</button>
-		      						<button  type="button" class="easyui-linkbutton" id="anniu" >(<strong class="a">60</strong>秒 )</button>
+							</span><input type="text"  id="code" name="code"  placeholder="请输入收到的验证码">
+							<button  type="button" class="easyui-linkbutton" id="links" value="发送短信验证码">发送短信验证码</button>
+							<a href="<%=path%>/storezhuche1.jsp"><font color="green">商家注册点这里</font></a>
+							<%--<button  type="button" class="easyui-linkbutton" id="anniu" >(<strong class="a">60</strong>秒 )</button>--%>
 						</div>
 					</div>
 				</div>
@@ -299,13 +307,13 @@
 
 		<script type="text/javascript">
 			<%--点击按钮返回登录页面--%>
-		function fanhui(){
+	function fanhui(){
 
 			location.href="<%=request.getContextPath()%>/login.jsp";
 			
 		}
-            <%--点击按钮发送验证码--%>
-		function fasongyz(){
+           <%--点击按钮发送验证码--%>
+		/*function fasongyz(){
 		
 			var phone=$("#phone").val();
 			if(phone==null||phone==""){
@@ -352,35 +360,61 @@
 				},
 				error:function(){
 					alert("注册出错！！！")
-				}				
+				}
 			})
 		}}
-			
+			*/
 		function zhuce(){
-			$.ajax({
-				url:"<%=request.getContextPath()%>/Lancontroller/saveuserinfo.do",
-				type:"post",
-				data:$("#saveuserinfo").serialize(),
-				dataType:"json",
-				async:false,
-				success:function (result){
-					if(result=="1"){
-						alert("账号已存在")
-					}
-					if(result=="2"){
-						alert("注册成功")
-						location.href="<%=request.getContextPath()%>/index.jsp"
-					}
-					if(result=="3"){
-						alert("验证码错误或失效")
-					}
-					
-				},
-				error:function(){
-					alert("注册出错！！！")
-				}				
-			})
-		}		
+		   var code= $("#code").val()
+            $.ajax({
+                url:"<%=request.getContextPath()%>/LoginAction/zhuce.action?code"+code,
+                data:$("#saveuserinfo").serialize(),
+                type:"post",
+                dataType:"text",
+                success:function(succ){
+                    if (succ == "1") {
+                        alert("注册失败验证码不正确")
+
+                    }else {
+                        alert("注册成功返回登录页面")
+                        location.href="<%=request.getContextPath()%>/login.jsp";
+                    }
+                },
+                error:function(){
+                }
+            })
+		}
+
+            var aa = 60;
+            $("#links").click(function(){
+              /*  alert($("#userPhone").val());*/
+                aa = 60;
+                this.disabled=true;
+                $.ajax({
+                    url:"<%=request.getContextPath()%>/LoginAction/yanzhengPhone.action",
+                    data:{"userphone":$("#userPhone").val()},
+                    dataType:"text",
+                    type:"post",
+                    async:false,
+                    success:function(){
+                        alert(123)
+                    },
+                    error:function(){
+                        alert("!系统错误")
+                    }
+                })
+                jishi()
+            })
+            function jishi(){
+
+                $("#links").val(aa+"秒后可重新发送");
+                if (aa-- != 0) {
+                    window.setTimeout("jishi()", 1000);
+                }else {
+                    $("#links").val("发送短信验证码");
+                    $("#links").prop("disabled",false);
+                }
+            }
 		</script>
 	
 </body>

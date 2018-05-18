@@ -197,7 +197,7 @@
                 formatter:function(value,row,index) {
                     if (row.goodsAuditState == 2) {
 
-                        return '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updatesuccgoods(' + row.goodsid + ')">审核成功</button>' +
+                        return '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updatesuccgoods(' + row.goodsid + ')">审核</button>' +
                                 '<button type="button" class="btn btn-danger" class="btn btn-primary"   onclick="errerGoods(' + row.goodsid + ')" >驳回</button>';
                     }else {
                         return "";

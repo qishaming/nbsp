@@ -20,9 +20,37 @@ public class LoginDaoImpl implements LoginDao{
         return user;
     }
 
+
+    @Override
+    public void addzhuces(User user) {
+
+        System.out.println(user+"++++++++++++++++++");
+        sessionFactory.getCurrentSession().save(user);
+    }
+
+    @Override
+    public User queryMerchantIdByPhone(String phone) {
+
+        String hql=" from User as u  where u.userphone ='"+phone+"'";
+
+        User user =(User) sessionFactory.getCurrentSession().createQuery(hql).uniqueResult();
+        return user;
+    }
+
+    @Override
+    public void addMerchant(Merchant merchant) {
+        sessionFactory.getCurrentSession().saveOrUpdate(merchant);
+    }
+
+    @Override
+    public void addzhuces1(User user) {
+        System.out.println(user+"++++++++++++++++++2");
+        sessionFactory.getCurrentSession().save(user);
+    }
+
     @Override
     public Merchant queryMerchant(Integer userid) {
-      Merchant Merchant= (Merchant) sessionFactory.getCurrentSession().createQuery("from Merchant as m where m.userid="+userid).uniqueResult();
+        Merchant Merchant= (Merchant) sessionFactory.getCurrentSession().createQuery("from Merchant as m where m.userid="+userid).uniqueResult();
         return Merchant;
     }
 }

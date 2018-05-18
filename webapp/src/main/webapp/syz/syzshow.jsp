@@ -286,6 +286,27 @@
 </div>
 
 
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel2">提交商品</h4>
+            </div>
+            <div class="modal-body">确认提交吗
+                <input type="hidden" id="updategoodsid">
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <input type="button" class="btn btn-primary" onclick="updategoodsid()" value="提交更改"/>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
 <script type="text/javascript">
 
 
@@ -386,6 +407,11 @@
         showRefresh: true,                  //是否显示刷新按钮
         clickToSelect: true,                //是否启用点击选中行
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+        onDblClickRow: function (row, tr) {
+            //console.log();
+            $('#updategoodsid').val(row.goodsid)
+            $('#myModal2').modal();
+        },
         columns:[[
             {field:'goodsid', title:'编号', idField:true,  width:10 },
             {field:'goodsname', title:'商品名', idField:true,  width:10 },
@@ -583,7 +609,23 @@
             $("#photo2").val(data);
         }
     })
-
+    function  updategoodsid() {
+        var updategoodsid=$("#updategoodsid").val();
+        $.ajax({
+            url:"<%=request.getContextPath()%>/syz/submitgoods.action",
+            type:"post",
+            data:{"goodsid":updategoodsid},
+            dataType:"json",
+            async:false,
+            success:function (mt){
+                $("#xinwen").bootstrapTable('refresh');
+                $('#myModal2').modal('hide')
+            },
+            error:function (){
+                alert("提交出错");
+            }
+        })
+    }
 
 
 
