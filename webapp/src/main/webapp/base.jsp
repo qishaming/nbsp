@@ -10,7 +10,7 @@
 <script type="text/javascript" src="<%=path %>/js/jquery-3.2.1/jquery-3.2.1.js"></script>
 <!-- bootstrap -->
 <link rel="stylesheet" href="<%=path %>/js/boot/bootstrap/css/bootstrap-theme.min.css" >
-<link rel="stylesheet" href="<%=path %>/js/boot/bootstrap/css/bootstrap.min.css" >
+<link rel="stylesheet" href="<%=path%>/css/bootstrap.min.css" />
 <script type="text/javascript" src="<%=path %>/js/boot/bootstrap/js/bootstrap.min.js"></script>
 <!-- treeview -->
 <link rel="stylesheet" href="<%=path %>/js/boot/bootstrap-treeview/dist/bootstrap-treeview.min.css" >
