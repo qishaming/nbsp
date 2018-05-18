@@ -1,6 +1,7 @@
 package com.jk.service.impl;
 
 import com.jk.pojo.Merchant;
+import com.jk.pojo.User;
 import com.jk.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,8 @@ public class RegisterServiceImpl implements RegisterService {
     private RegisterDao dao;
 
     @Override
-    public List queryRegister() {
-        return dao.queryRegister();
+    public List queryRegister(Integer userid) {
+        return dao.queryRegister(userid);
     }
 
     @Override
@@ -31,6 +32,11 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public void shenghe(Integer merchantId) {
         dao.shenghe(merchantId);
+    }
+
+    @Override
+    public void queryByName(User user) {
+        dao.queryByName(user);
     }
 
 

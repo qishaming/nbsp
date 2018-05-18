@@ -2,6 +2,7 @@ package com.jk.dao.impl;
 
 import com.jk.dao.RegisterDao;
 import com.jk.pojo.Merchant;
+import com.jk.pojo.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,10 +16,24 @@ public class RegisterDaoImpl implements RegisterDao{
     private SessionFactory sessionFactory;
 
     @Override
-    public List queryRegister() {
+    public List queryRegister(Integer userid) {
 
-        return sessionFactory.openSession().createQuery("from  Merchant").list();
+        return sessionFactory.openSession().createQuery("from  Merchant   where userid="+userid).list();
     }
+
+    @Override
+    public void queryByName(User user) {
+        StringBuffer sql=new StringBuffer(
+                "UPDATE  user  u SET  u.`password`='"+user.getPassword()+"'  WHERE  u.`username`='"+ user.getUsername()+"'"
+        );
+        sessionFactory.openSession().createSQLQuery(sql.toString()).executeUpdate();
+
+    }
+
+    /*@Override
+    public List queryByName(String name) {
+        return sessionFactory.openSession().createQuery("from  User   where username='"+name+"'").list();
+    }*/
 
     @Override
     public Merchant queryById(Integer merchantId) {

@@ -79,8 +79,9 @@
                     <div class="widget-title">
                         <span class="icon"><i class="icon-th"></i></span>
                         <h5>数据展示</h5>
-                        <table id="register" class="table"></table>
+
                     </div>
+                    <table id="register" class="table"></table>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered data-table">
                             <thead>
