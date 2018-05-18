@@ -64,7 +64,6 @@ public class testDaoImpl implements testDao {
         Date d = new Date();
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String date = sim.format(d);
-
         String sql = "UPDATE pyg_repertory SET repertoryNumber = "+repertory.getRepertoryNumber()+",repertoryUpdateTime='"+date+"' WHERE repertoryId = "+repertory.getRepertoryId();
 
 
