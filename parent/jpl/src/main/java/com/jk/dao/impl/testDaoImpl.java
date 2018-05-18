@@ -9,6 +9,8 @@ import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -59,9 +61,11 @@ public class testDaoImpl implements testDao {
 
     @Override
     public void updatedRepertory(Repertory repertory) {
+        Date d = new Date();
+        SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String date = sim.format(d);
 
-
-        String sql = "UPDATE pyg_repertory SET repertoryNumber = "+repertory.getRepertoryNumber()+" WHERE repertoryId = "+repertory.getRepertoryId();
+        String sql = "UPDATE pyg_repertory SET repertoryNumber = "+repertory.getRepertoryNumber()+",repertoryUpdateTime='"+date+"' WHERE repertoryId = "+repertory.getRepertoryId();
 
 
         sessionFactory.getCurrentSession().createSQLQuery(sql).executeUpdate();
