@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<jsp:include page="base.jsp"></jsp:include>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>商家订单页面</title>
+    <title> Admin</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="css/fullcalendar.css" />
@@ -66,7 +67,7 @@
                 <li><a href="show.jsp">支出</a></li>
             </ul>
         </li>
-        <li> <a href="businessOrder.jsp"><i class="icon icon-signal"></i> <span>订单详情</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>businessOrder.jsp"><i class="icon icon-signal"></i> <span>订单详情</span></a> </li>
         <li> <a href="#"><i class="icon icon-signal"></i> <span>库存管理</span></a> </li>
     </ul>
 </div>
@@ -83,6 +84,7 @@
                     <div class="widget-title">
                         <span class="icon"><i class="icon-th"></i></span>
                         <h5>数据展示</h5>
+                        <table id="orderTable"></table>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered data-table">
@@ -101,6 +103,187 @@
 </div>
 
 
+<script type="text/javascript">
 
+    $(function () {
+        $("#orderTable").bootstrapTable({
+            url:"<%=request.getContextPath()%>/businessOrderAction/queryBusinessOrder.action",
+            striped: true,//隔行变色
+            showPaginationSwitch:true,//是否显示 数据条数选择框
+            minimumCountColumns:1,//最小留下一个
+            showRefresh:true,//显示刷新按钮
+            showToggle:true,//显示切换视图
+//     	  	    search:true,//是否显示搜索框
+            searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
+            pagination: true,                   //是否显示分页（*）
+            sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+            silent: true,
+            pagination:true,//开启分页
+            paginationLoop:true,//开启分页无限循环
+            pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+            pageSize: 5,                     //每页的记录行数（*）
+            pageList: [5, 10],        //可供选择的每页的行数（*）
+            search: true,                      //是否显示表格搜索
+            showColumns: true,                  //是否显示所有的列（选择显示的列）
+            showRefresh: true,                  //是否显示刷新按钮
+            clickToSelect: true,                //是否启用点击选中行
+            uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+            //sidePagination:"server",//
+            method:'post',//发送请求的方式
+            contentType:"application/x-www-form-urlencoded",//必须的否则条件查询时会乱码
+            columns:[{
+                field:'orderFormId',
+                title:'订单编号',
+                idField:true,
+                width:100
+            }, {
+                field:'customerId',
+                title:'客户编号',
+                width:100
+            },
+                {
+                    field:'customerCount',
+                    title:'订单数量',
+                    width:100
+                },{
+                    field:'orderFormTotalPrice',
+                    title:'订单总价格',
+                    width:100
+                },{
+                    field:'orderRegisterTime',
+                    title:'订单生成时间',
+                    width:100
+                },
+                {
+                    field:'merchantId',
+                    title:'商家编号',
+                    width:100
+                },
+                {
+                    field:'goodsid',
+                    title:'商品编号',
+                    width:100
+                },
+                {
+                    field:'orderUpdateTime',
+                    title:'订单更新时间',
+                    width:100
+                },  {
+                    field:'orderFormState',
+                    title:'订单审核状态',
+                    width:100,formatter: function(value,row,index){
+                        //初始化一个订单状态
+                        var resultOrderFormState="";
+
+                        if(row.orderFormState==1){
+                            resultOrderFormState="待处理";
+                        }else if(row.orderFormState==2){
+                            resultOrderFormState="发货中";
+                        }else if(row.orderFormState==3){
+                            resultOrderFormState="发货成功";
+                        }
+                        return resultOrderFormState;
+                    }
+                },
+                {
+                    field:'del',
+                    title:'操作',
+                    width:100,formatter: function(value,row,index){
+                    if(row.orderFormState==1){
+                        return '<button type="button" id="btn_1" onclick="btnAction('+row.orderFormId+',1)">点击发货</button>';
+                    }else if(row.orderFormState==2){
+                        return '<button type="button" id="btn_2" onclick="btnAction('+row.orderFormId+',2)">查看物流</button>';
+                    }else if(row.orderFormState==4){
+                        return '<button type="button" id="btn_4" onclick="btnAction('+row.orderFormId+',4)">查看用户评价</button>'
+                    }else if(row.orderFormState==5){
+                        return '<button type="button" id="btn_5" onclick="btnAction('+row.orderFormId+',5)">删除订单信息</button>'
+                    }
+                }
+                }
+            ]
+        })
+    })
+</script>
+
+<script type="text/javascript">
+    function btnAction(id,flag){
+
+        if(flag==1){
+            $.ajax({
+                url:"<%=request.getContextPath()%>/businessOrderAction/updateOrderState.action",
+                type:"post",
+                data:{"orderId":id},
+                dataType:"text",
+                success:function (result){
+                    alert(result);
+                    if(result="1"){
+                        alert('已发货！');
+                        $("#orderTable").bootstrapTable('refresh');
+                    }else{
+                        alert('发货失败！');
+                    }
+                },
+                error:function (){
+                    alert("出错");
+                }
+            })
+        }else if(flag==2){
+            //查询物流（queryLogisticsInfo）
+            $.ajax({
+                url:"<%=request.getContextPath()%>/businessOrderAction/queryLogisticsInfo.action",
+                type:"post",
+                data:{"orderId":id},
+                dataType:"text",
+                success:function (result){
+                    if(result == "success"){
+                        // alert('物流信息查询成功！');
+                        $("#orderTable").bootstrapTable('refresh');
+                    }
+                },
+                error:function (){
+                    alert("物流信息查询出错");
+                }
+            })
+        }else if(flag==4){
+            //查询用户评价（queryUserEvaluation）
+            $.ajax({
+                url:"<%=request.getContextPath()%>/businessOrderAction/queryUserEvaluation.action",
+                type:"post",
+                data:{"orderId":id},
+                dataType:"text",
+                success:function (result){
+                    if(result == "success"){
+                        //alert('订单信息删除成功！');
+                        $("#orderTable").bootstrapTable('refresh');
+                    }
+                },
+                error:function (){
+                    alert("用户评价查询出错");
+                }
+            })
+        }else if(flag==5){
+            //删除订单信息
+            alert(id);
+            alert(flag);
+            $.ajax({
+                url:"<%=request.getContextPath()%>/businessOrderAction/delectOrderById.action",
+                type:"post",
+                data:{"orderId":id},
+                dataType:"text",
+                success:function (result){
+                    alert(result)
+                    if(result == "success"){
+                        alert('订单信息删除成功！');3
+                        $("#orderTable").bootstrapTable('refresh');
+                    }
+                },
+                error:function (){
+                    alert("删除出错");
+                }
+            })
+        }
+    }
+
+</script>
 </body>
 </html>
