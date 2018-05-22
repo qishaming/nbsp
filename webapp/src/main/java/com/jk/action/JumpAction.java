@@ -69,4 +69,12 @@ public class JumpAction {
         return      "syz1";
     }
 
+    //跳品牌管理
+    @Action(value = "jumpOrder",results = {
+            @Result(name = "success",location = "/businessOrder.jsp")
+    })
+    public String jumpOrder(){
+        return      "success";
+    }
+
 }

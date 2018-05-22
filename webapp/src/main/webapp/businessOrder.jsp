@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%String path = request.getContextPath(); %>
 <jsp:include page="base.jsp"></jsp:include>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title> Admin</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="css/fullcalendar.css" />
-    <link rel="stylesheet" href="css/maruti-style.css" />
-    <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" />
+    <link rel="stylesheet" href="<%=path%>/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="<%=path%>/css/fullcalendar.css" />
+    <link rel="stylesheet" href="<%=path%>/css/maruti-style.css" />
+    <link rel="stylesheet" href="<%=path%>/css/maruti-media.css" class="skin-color" />
 </head>
 <body>
 <%--  hello
