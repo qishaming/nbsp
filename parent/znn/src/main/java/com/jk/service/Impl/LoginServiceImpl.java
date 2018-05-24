@@ -1,6 +1,7 @@
 package com.jk.service.Impl;
 
 import com.jk.dao.LoginDao;
+import com.jk.pojo.GuangGao;
 import com.jk.pojo.Merchant;
 import com.jk.service.LoginService;
 import org.apache.struts2.ServletActionContext;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.jk.pojo.User;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -95,6 +97,38 @@ public class LoginServiceImpl implements LoginService{
         user.setUserstate(2);
        /* System.out.println(user+"-------------");*/
         loginDao.addzhuces1(user);
+    }
+
+    @Override
+    public List queryGuangGao() {
+        return loginDao.queryGuangGao();
+    }
+
+    @Override
+    public void updateGuangGao(GuangGao guangGao) {
+        loginDao.updateGuangGao(guangGao);
+    }
+
+    @Override
+    public void deleteGuangGao(Integer gid) {
+
+        loginDao.deleteGuangGao(gid);
+    }
+
+    @Override
+    public List queryMerchantName() {
+
+        return  loginDao.queryMerchantName();
+    }
+
+    @Override
+    public void addGuangGao(GuangGao guangGao) {
+        loginDao.addGuangGao(guangGao);
+    }
+
+    @Override
+    public GuangGao queryGuangGaoById(Integer gid) {
+        return loginDao.queryGuangGaoById(gid);
     }
 
 
