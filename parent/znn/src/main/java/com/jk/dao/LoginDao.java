@@ -1,7 +1,10 @@
 package com.jk.dao;
 
+import com.jk.pojo.GuangGao;
 import com.jk.pojo.Merchant;
 import com.jk.pojo.User;
+
+import java.util.List;
 
 public interface LoginDao {
 
@@ -17,4 +20,15 @@ public interface LoginDao {
 
     Merchant queryMerchant(Integer userid);
 
+    List queryGuangGao();
+
+    void updateGuangGao(GuangGao guangGao);
+
+    void deleteGuangGao(Integer gid);
+
+    List queryMerchantName();
+
+    void addGuangGao(GuangGao guangGao);
+
+    GuangGao queryGuangGaoById(Integer gid);
 }

@@ -61,6 +61,9 @@
         <li><a href="<%=request.getContextPath()%>/jump/shangpinpinpail.action"><i class="icon icon-th"></i> <span>品牌管理</span></a>
         </li>
         <li> <a href="<%=request.getContextPath()%>/jump/shangpingl.action"><i class="icon icon-signal"></i> <span>商品审核</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/ZnnAction/GuangGao.action"><i class="icon icon-signal"></i> <span>广告位管理</span></a> </li>
+<%--<li> <a href="<%=request.getContextPath()%>/ZnnAction/queryGuangGao.action"><i class="icon icon-signal"></i> <span>广告位管理</span></a> </li>
+--%>
     </ul>
 </div>
 
