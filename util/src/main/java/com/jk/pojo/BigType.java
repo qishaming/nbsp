@@ -3,14 +3,16 @@ package com.jk.pojo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pyg_bigType")
+@Table(name = "pyg_bigtype")
 public class BigType {
+
     @Id
     @Column(name = "bigTypeId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer bigTypeId;
+    private  Integer bigTypeId;//主键
+
     @Column(name = "bigTypeName")
-    private String bigTypeName;
+    private String bigTypeName;//大类名称
 
     public Integer getBigTypeId() {
         return bigTypeId;
@@ -30,7 +32,7 @@ public class BigType {
 
     @Override
     public String toString() {
-        return "bigType{" +
+        return "BigType{" +
                 "bigTypeId=" + bigTypeId +
                 ", bigTypeName='" + bigTypeName + '\'' +
                 '}';

@@ -52,18 +52,12 @@
                 <li><a href="<%=request.getContextPath()%>/jump/shangjiagl.action">审核商家</a></li>
             </ul>
         </li>
-        <%--<li> <i class="icon icon-inbox"></i> <span>基本信息管理</span></a>
-            <ul>
-                <li><a href="show.jsp">修改资料</a></li>
-                <li><a href="show.jsp">修改密码</a></li>
-            </ul>
-        </li>--%>
         <li><a href="<%=request.getContextPath()%>/jump/shangpinpinpail.action"><i class="icon icon-th"></i> <span>品牌管理</span></a>
         </li>
         <li> <a href="<%=request.getContextPath()%>/jump/shangpingl.action"><i class="icon icon-signal"></i> <span>商品审核</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/big/bigTypeList.action"><i class="icon icon-tags"></i> <span>大类管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/small/smallTypeList.action"><i class="icon icon-tags"></i> <span>小类管理</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/ZnnAction/GuangGao.action"><i class="icon icon-signal"></i> <span>广告位管理</span></a> </li>
-<%--<li> <a href="<%=request.getContextPath()%>/ZnnAction/queryGuangGao.action"><i class="icon icon-signal"></i> <span>广告位管理</span></a> </li>
---%>
     </ul>
 </div>
 

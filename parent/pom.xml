@@ -18,6 +18,7 @@
         <module>znn</module>
         <module>zq</module>
         <module>syz</module>
+        <module>szh</module>
     </modules>
 
     <dependencies>

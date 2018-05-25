@@ -28,6 +28,9 @@
           <element id="archive" name="gyc-1.0-SNAPSHOT.jar">
             <element id="module-output" name="gyc" />
           </element>
+          <element id="archive" name="szh-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="szh" />
+          </element>
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.1.24" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.8.RELEASE" />
           <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />

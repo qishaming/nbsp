@@ -1,17 +1,24 @@
 package com.jk.pojo;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pyg_smallType")
+@Table(name = "pyg_smalltype")
 public class SmallType {
+
     @Id
     @Column(name = "smallTypeId")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer smallTypeId;
-    @Column(name = "smallTypeName")
-    private String smallTypeName;
+    private  Integer smallTypeId;//主键
+
     @Column(name = "bigTypeId")
-    private Integer bigTypeId;
+    private String bigTypeId;//大类ID
+
+    @Column(name = "bigTypeName")
+    private String bigTypeName;//大类名称
+
+    @Column(name = "smallTypeName")
+    private String smallTypeName;//大类名称
 
     public Integer getSmallTypeId() {
         return smallTypeId;
@@ -19,6 +26,14 @@ public class SmallType {
 
     public void setSmallTypeId(Integer smallTypeId) {
         this.smallTypeId = smallTypeId;
+    }
+
+    public String getBigTypeId() {
+        return bigTypeId;
+    }
+
+    public void setBigTypeId(String bigTypeId) {
+        this.bigTypeId = bigTypeId;
     }
 
     public String getSmallTypeName() {
@@ -29,20 +44,12 @@ public class SmallType {
         this.smallTypeName = smallTypeName;
     }
 
-    public Integer getBigTypeId() {
-        return bigTypeId;
-    }
-
-    public void setBigTypeId(Integer bigTypeId) {
-        this.bigTypeId = bigTypeId;
-    }
-
     @Override
     public String toString() {
-        return "smallType{" +
+        return "SmallType{" +
                 "smallTypeId=" + smallTypeId +
+                ", bigTypeId='" + bigTypeId + '\'' +
                 ", smallTypeName='" + smallTypeName + '\'' +
-                ", bigTypeId=" + bigTypeId +
                 '}';
     }
 }

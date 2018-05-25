@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/nbsp.iml" filepath="$PROJECT_DIR$/nbsp.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/syz/syz.iml" filepath="$PROJECT_DIR$/parent/syz/syz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/szh/szh.iml" filepath="$PROJECT_DIR$/parent/szh/szh.iml" />
       <module fileurl="file://$PROJECT_DIR$/util/util.iml" filepath="$PROJECT_DIR$/util/util.iml" />
       <module fileurl="file://$PROJECT_DIR$/webapp/webapp.iml" filepath="$PROJECT_DIR$/webapp/webapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent/znn/znn.iml" filepath="$PROJECT_DIR$/parent/znn/znn.iml" />
