@@ -16,4 +16,37 @@ public class GoodsAndSize {
 
     @Column(name = "sizeId")
     private Integer sizeId;//规格id
+
+    public Integer getGsId() {
+        return gsId;
+    }
+
+    public void setGsId(Integer gsId) {
+        this.gsId = gsId;
+    }
+
+    public Integer getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public Integer getSizeId() {
+        return sizeId;
+    }
+
+    public void setSizeId(Integer sizeId) {
+        this.sizeId = sizeId;
+    }
+
+    @Override
+    public String toString() {
+        return "GoodsAndSize{" +
+                "gsId=" + gsId +
+                ", goodsId=" + goodsId +
+                ", sizeId=" + sizeId +
+                '}';
+    }
 }
