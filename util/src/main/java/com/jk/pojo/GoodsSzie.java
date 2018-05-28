@@ -14,6 +14,12 @@ public class GoodsSzie {
     @Column(name = "goodsSizeName")
     private String goodsSizeName;
 
+    @Column(name = "size")
+    private String size;//规格值
+
+    @Column(name = "smallTypeId")
+    private Integer smallTypeId;//规格
+
 
 
     public Integer getGoodsSizeId() {
@@ -32,11 +38,29 @@ public class GoodsSzie {
         this.goodsSizeName = goodsSizeName;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getSmallTypeId() {
+        return smallTypeId;
+    }
+
+    public void setSmallTypeId(Integer smallTypeId) {
+        this.smallTypeId = smallTypeId;
+    }
+
     @Override
     public String toString() {
         return "GoodsSzie{" +
                 "goodsSizeId=" + goodsSizeId +
                 ", goodsSizeName='" + goodsSizeName + '\'' +
+                ", size='" + size + '\'' +
+                ", smallTypeId=" + smallTypeId +
                 '}';
     }
 }
