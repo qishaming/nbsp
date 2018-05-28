@@ -9,7 +9,16 @@ import org.apache.struts2.convention.annotation.Result;
 @ParentPackage("basePackage")
 public class JumpAction {
 
+    /**
+     *      * 跳新闻家管理页面
 
+     */
+    @Action(value = "xinwen",results = {
+            @Result(name = "success",location = "/zq/newshow.jsp")
+    })
+    public String xinwen(){
+        return  "success";
+    }
     /**
      * 跳转商家管理页面
      * @return

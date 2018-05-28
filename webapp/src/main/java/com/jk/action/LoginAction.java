@@ -254,11 +254,7 @@ public class LoginAction extends BaseAction{
             String sessionCode = ServletActionContext.getRequest().getSession().getAttribute("code").toString();
             map=loginService.login(username,password,validataCode,sessionCode);
             String mas = (String) map.get("mas");
-            int loginFlag=1;
-            if(mas=="errorcode"){
-                loginFlag=4;
-                ServletActionContext.getRequest().getSession().setAttribute("loginFlag",loginFlag);
-            }
+
             //暂时无用，用于主页面注销使用
             User user = (User) map.get("user");
             if(user!=null){
@@ -268,6 +264,10 @@ public class LoginAction extends BaseAction{
                 //HttpServletRequest request= ServletActionContext.getRequest();
                 ServletActionContext.getRequest().getSession().setAttribute("userstate",user.getUserstate());
                 ServletActionContext.getRequest().getSession().setAttribute("username",user.getUsername());
+            }
+            Merchant merchant2= (Merchant) map.get("merchant");
+            if(user!=null&&user.getUserstate()==2&merchant2.getMerchantAuditState()!=2){
+                mas = "4";
             }
             super.writeJson(mas);
     }

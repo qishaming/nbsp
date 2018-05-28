@@ -1,21 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Bootstrap 核心css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap TreeView css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
-    <!-- Bootstrap addTabs css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootStrap-addTabs/bootstrap.addtabs.css" rel="stylesheet">
-    <!-- Bootstrap table css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
-    <!-- bootstrap-datetimepicker css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <!-- bootstrap-dialog css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
-    <!-- bootstrap-fileinput css -->
-    <link href="<%=request.getContextPath() %>/zq/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title> Admin</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />

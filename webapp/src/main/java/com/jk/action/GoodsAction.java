@@ -176,12 +176,10 @@ public class GoodsAction extends BaseAction {
 
 
 //商品品牌修改状态 ru
-    @Action(value="/queryGoodsPin")
-
-    public void  queryGoodsPin(){
-        List listgp= goodsService.queryGoodsPin();
-
-        super.writeJson(listgp);
+    @Action(value="/queryBrand")
+    public void queryBrand(){
+      List listb= goodsService.queryBrand();
+        super.writeJson(listb);
 
 
     }

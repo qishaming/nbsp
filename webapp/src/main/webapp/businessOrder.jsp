@@ -48,27 +48,16 @@
 
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i>商家管理</a>
     <ul>
-        <li class="active"><i class="icon icon-home"></i> <span>商品管理</span></a>
-            <ul>
-                <li><a href="show.jsp">商品录入</a></li>
-                <li><a href="show.jsp">商品管理</a></li>
-            </ul>
+        <li> <a href="<%=request.getContextPath()%>/jump/tiao.action"><i class="icon icon-signal"></i> <span>商品管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/tiaoPinpai.action"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/info.action"><i class="icon icon-signal"></i> <span>信息管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/updatePass.action"><i class="icon icon-signal"></i> <span>修改密码</span></a> </li>
+
+        <li><a href="<%=request.getContextPath()%>/jpl/bb.action"><i class="icon icon-th"></i> <span>数据分析</span></a>
+
         </li>
-        <li> <a href="#"><i class="icon icon-signal"></i> <span>品牌管理</span></a> </li>
-        <li> <i class="icon icon-inbox"></i> <span>基本信息管理</span></a>
-            <ul>
-                <li><a href="show.jsp">修改资料</a></li>
-                <li><a href="show.jsp">修改密码</a></li>
-            </ul>
-        </li>
-        <li><%--<a href="#">--%><i class="icon icon-th"></i> <span>财务状况</span></a>
-            <ul>
-                <li><a href="show.jsp">收入</a></li>
-                <li><a href="show.jsp">支出</a></li>
-            </ul>
-        </li>
-        <li> <a href="<%=request.getContextPath()%>businessOrder.jsp"><i class="icon icon-signal"></i> <span>订单详情</span></a> </li>
-        <li> <a href="#"><i class="icon icon-signal"></i> <span>库存管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/jumpOrder.action"><i class="icon icon-tag"></i> <span>订单详情</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jpl/aa.action"><i class="icon icon-tags"></i> <span>库存管理</span></a> </li>
     </ul>
 </div>
 

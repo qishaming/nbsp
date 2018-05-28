@@ -43,7 +43,7 @@ public class ZnnAction extends BaseAction{
     public void setGuangGao(GuangGao guangGao) { this.guangGao = guangGao; }
    //用于页面跳转-----------------------------
     @Action(value = "GuangGao",results = {
-            @Result(name = "guanggao",location = "/guanggao.jsp")
+            @Result(name = "guanggao",location = "/guanggao2.jsp")
     })
     public  String  GuangGao(){
         return "guanggao";
@@ -98,6 +98,7 @@ public class ZnnAction extends BaseAction{
     public  void  deleteGuangGao(){
         loginService.deleteGuangGao(gid);
     }
+
 
 
 }

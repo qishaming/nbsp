@@ -65,12 +65,7 @@ public class GoodsDaoImpl implements GoodsDao {
         return  listgs;
     }
 
-    public List queryGoodsPin() {
-        String hql="select t1.goodsid as goodsid ,t1.goodsname as goodsname ,t1.goodsimg as goodsimg, t1.goodsPrice as goodsPrice,t1.goodsDiscounts as goodsDiscounts,t2.brandId as brandId, t2.brandName as brandName, t2.brandAuditState as brandAuditState from pyg_goods  t1,pyg_brand t2  where t1.brandId=t2.brandId  ";
 
-        List listgp= sessionFactory.openSession().createSQLQuery(hql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
-        return listgp;
-    }
 
     public void updateGoodsPinSuccess(String hql) {
         sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();

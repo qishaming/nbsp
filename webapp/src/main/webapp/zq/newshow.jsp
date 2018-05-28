@@ -1,9 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> Admin</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="../css/fullcalendar.css" />
+    <link rel="stylesheet" href="../css/maruti-style.css" />
+    <link rel="stylesheet" href="../css/maruti-media.css" class="skin-color" />
+
     <link href="<%=request.getContextPath() %>/syz/js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Bootstrap 核心css -->
+<%--
     <link href="<%=request.getContextPath() %>/syz/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+--%>
     <!-- Bootstrap TreeView css -->
     <link href="<%=request.getContextPath() %>/syz/js/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
     <!-- Bootstrap addTabs css -->
@@ -16,15 +26,8 @@
     <link href="<%=request.getContextPath() %>/syz/js/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
     <!-- bootstrap-fileinput css -->
     <link href="<%=request.getContextPath() %>/syz/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title> Admin</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
-    <link rel="stylesheet" href="../css/fullcalendar.css" />
-    <link rel="stylesheet" href="../css/maruti-style.css" />
-    <link rel="stylesheet" href="../css/maruti-media.css" class="skin-color" />
+
 </head>
-<body>
 <script src="<%=request.getContextPath() %>/syz/js/jquery.min.js"></script>
 <!-- bootstrap 核心js文件 -->
 <script src="<%=request.getContextPath() %>/syz/js/bootstrap/js/bootstrap.min.js"></script>
@@ -44,6 +47,15 @@
 <!-- bootstrap-fileinput -->
 <script src="<%=request.getContextPath() %>/syz/js/bootstrap-fileinput/js/fileinput.js"></script>
 <script src="<%=request.getContextPath() %>/syz/js/bootstrap-fileinput/js/locales/zh.js"></script>
+<%--  hello
+  <a href="<%=request.getContextPath()%>/test!toShow.action?id=1"> tiao</a>--%>
+<body>
+
+
+
+
+
+
 <%--  hello
   <a href="<%=request.getContextPath()%>/test!toShow.action?id=1"> tiao</a>--%>
 
@@ -79,7 +91,7 @@
 </div>-->
 <!--close-top-Header-menu-->
 
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i></a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i>商家管理</a>
     <ul>
         <li class="active"><i class="icon icon-home"></i> <span>商家管理</span></a>
             <ul>
@@ -93,13 +105,6 @@
         <li> <a href="<%=request.getContextPath()%>/small/smallTypeList.action"><i class="icon icon-tags"></i> <span>小类管理</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/ZnnAction/GuangGao.action"><i class="icon icon-signal"></i> <span>广告位管理</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/jump/xinwen.action"><i class="icon icon-signal"></i> <span>新闻管理</span></a> </li>
-        <%--<li> <i class="icon icon-inbox"></i> <span>基本信息管理</span></a>
-            <ul>
-                <li><a href="show.jsp">修改资料</a></li>
-                <li><a href="show.jsp">修改密码</a></li>
-            </ul>
-        </li>--%>
-
     </ul>
 </div>
 
@@ -117,12 +122,75 @@
                         <h5>数据展示</h5>
 
                     </div>
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">新增</button>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel" >
+                                        新增
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="addForm">
+
+                                        新闻标题：<input type='text' name='news.title' /><br/>
+                                        新闻内容：         <textarea  name='news.content'   rows="3"></textarea>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addxinwen()">
+                                        提交更改
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                    <table class="table" id="merchantbrand" border="1"></table>
+
+                    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title"  onclick="updateyy(xwid)">
+                                        修改
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="upForm">
+                                        <input type="hidden"  name='news.newsid'>
+                                        新闻标题：<input type='text' name='news.title' /><br/>
+                                        新闻内容：<textarea  name='news.content'   rows="3"></textarea><br/>
+                                        新闻时间：<input type='text' name='news.newsdate' /><br/>
+                                        修改时间：<input type='text' name='news.updatetime' /><br/>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="upxinwen()">
+                                        提交更改
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <div class="widget-content nopadding">
-                        <table class="table table-bordered data-table">
+                        <table class="table" id="news" border="1"></table>
                             <thead>
                             </tbody>
                         </table>
@@ -138,8 +206,9 @@
 </div>
 <script type="text/javascript">
 
-    $("#merchantbrand").bootstrapTable({
-        url:"<%=request.getContextPath()%>/goods/queryBrand.action",
+
+    $("#news").bootstrapTable({
+        url:"<%=request.getContextPath()%>/news/queryXin.action",
         pagination: true,                   //是否显示分页（*）
         sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
@@ -151,78 +220,86 @@
         clickToSelect: true,                //是否启用点击选中行
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         columns:[[
-
-            {field:'brandId', title:'品牌ID', width:10 },
-            {field:'brandName', title:'品牌名称', width:10 },
-            {field:'brandAuditState', title:'状态', width:10,
-                formatter: function(value,row,index){
-                    if(value=="0") {
-                        return "未审核";
-                    }if(value=="1"){
-                        return "已通过";
-                    }if(value=="2"){
-                        return "未通过";
-
-                    }}
-            },
-
-
+            {field:'newsid', title:'编号', idField:true,   },
+            {field:'title', title:'标题',  },
+            {field:'content', title:'内容', },
+            {field:'newsdate', title:'时间', },
+            {field:'updatetime', title:'修改时间', },
             {field:'hhh', title:'操作', width:10,
                 formatter:function(value,row,index){
-                    if(row.brandAuditState==0) {
-                        return '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updatePinSuccess(' + row.brandId + ')">品牌通过</button>' +
-                                '<button type="button" class="btn btn-danger" class="btn btn-primary"  onclick="updatePinErre(' + row.brandId + ')" >品牌驳回</button>';
-                    }
-                    if(row.brandAuditState==2) {
-                        return '<button  class="btn btn-primary"  data-toggle="modal"  onclick="updatePinSuccess(' + row.brandId + ')">品牌通过</button>'
-                    }
-                    if(row.brandAuditState==1){
-                        return '<button type="button" class="btn btn-danger" class="btn btn-primary"  onclick="updatePinErre(' + row.brandId + ')" >品牌驳回</button>';
-
-
-
-                    }
+                    return '<button  class="btn btn-primary"  data-toggle="modal" data-target="#myModal1" onclick="updatexin('+row.newsid+')">修改</button>'+
+                            '<button  class="btn btn-danger"   data-toggle="modal"  onclick="delNews('+row.newsid+')">删除</button>'
 
 
 
                 }}
         ]]
     });
-    function  updatePinSuccess(brandId) {
+    function delNews(newsid){
         $.ajax({
-            url: "<%=request.getContextPath()%>/goods/updateGoodsPinSuccess.action",
-            dataType: "text",
-            type: "post",
-            data: {"brandId": brandId},
-            success: function (data) {
+            url:"<%=request.getContextPath()%>/new/delXin.action",
+            dataType:"text",
+            type:"post",
+            data:{"newsid":newsid},
+            success:function(data){
 
 
-                $('#merchantbrand').bootstrapTable('refresh');
+                $('#news').bootstrapTable('refresh');
             }
         })
-
-
-
-
-
     }
-    function  updatePinErre(brandId) {
+
+    function addxinwen(){
         $.ajax({
-            url: "<%=request.getContextPath()%>/goods/updateGoodsPinEree.action",
-            dataType: "text",
-            type: "post",
-            data: {"brandId": brandId},
-            success: function (data) {
+            url:"<%=request.getContextPath()%>/new/addXin.action",
+            type:"post",
+            data:$("#addForm").serialize(),
+            dataType:"text",
+            success:function (addFlag){
+                $("#news").bootstrapTable('refresh');
 
-
-                $('#merchantbrand').bootstrapTable('refresh');
+            },
+            error:function (){
+                alert("程序错误");
             }
         })
 
     }
+    function updatexin(newsid){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/new/hxNew.action",
+            type:"post",
+            data:{"newsid":newsid},
+            dataType:"json",
+            success:function (xin){
+                $("[name='news.newsid']").val(xin.newsid);
+                $("[name='news.title']").val(xin.title);
+                $("[name='news.content']").val(xin.content);
+                 $("[name='news.newsdate']").val(xin.newsdate);
+                $("[name='news.updatetime']").val(xin.updatetime);
+            }
+        });
 
+    }
 
+    function upxinwen(){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/new/updateNew.action",
+            type:"post",
+            data:$("#upForm").serialize(),
+            dataType:"text",
+            success:function (updateFlag){
+                $("#news").bootstrapTable('refresh');
 
+            },
+            error:function (){
+                alert("修改失败");
+
+            }
+
+        })
+
+    }
 
 
 

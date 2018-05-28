@@ -66,6 +66,8 @@
 				<value>com.jk.pojo.OrderForm</value>
 				<value>com.jk.pojo.Repertory</value>
 				<value>com.jk.pojo.BigType</value>
+				<value>com.jk.pojo.GuangGao</value>
+				<value>com.jk.pojo.News</value>
 			</list>
 		</property>
 	</bean>

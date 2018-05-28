@@ -21,8 +21,8 @@ public class BusinessOrderServiceImpl implements BusinessOrderService{
     @Autowired
     private BusinessOrderDao businessOrderDao;
 
-    public List queryBusinessOrder() {
-        return businessOrderDao.queryBusinessOrder();
+    public List queryBusinessOrder(Integer merchantId) {
+        return businessOrderDao.queryBusinessOrder(merchantId);
     }
 
     //修改订单状态，点击发货状态由1-2

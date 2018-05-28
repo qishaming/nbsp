@@ -23,9 +23,9 @@ public class BusinessOrderDaoImpl implements BusinessOrderDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public List queryBusinessOrder() {
+    public List queryBusinessOrder(Integer merchantId) {
 
-        return sessionFactory.openSession().createQuery("from OrderForm").list();
+        return sessionFactory.openSession().createQuery("from OrderForm where merchantId="+merchantId).list();
 
     }
 

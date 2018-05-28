@@ -46,10 +46,6 @@ public class GoodsServiceImpl implements GoodsService {
 
 
 
-    public List queryGoodsPin() {
-
-        return goodsDao.queryGoodsPin();
-    }
 
     public void updateGoodsPinSuccess(Integer brandId) {
         String hql="update Brand set brandAuditState=1  where brandId="+brandId;

@@ -24,7 +24,7 @@ public interface GoodsService {
 
 
 
-    java.util.List queryGoodsPin();
+
 
 
 

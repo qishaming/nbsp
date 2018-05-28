@@ -1,5 +1,8 @@
 package com.jk.action;
 
+import com.jk.pojo.Merchant;
+import com.jk.pojo.User;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -30,7 +33,9 @@ public class BusinessOrderAction extends BaseAction {
     @Action(value ="queryBusinessOrder")
     public void queryBusinessOrder(){
         System.err.print("已经进入订单管理后台action");
-        List list = businessOrderService.queryBusinessOrder();
+       Merchant merchant= (Merchant) ServletActionContext.getRequest().getSession().getAttribute("merchant");
+
+        List list = businessOrderService.queryBusinessOrder(merchant.getMerchantId());
         super.writeJson(list);
     }
 

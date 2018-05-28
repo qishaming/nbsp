@@ -92,6 +92,7 @@
         <li> <a href="<%=request.getContextPath()%>/big/bigTypeList.action"><i class="icon icon-tags"></i> <span>大类管理</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/small/smallTypeList.action"><i class="icon icon-tags"></i> <span>小类管理</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/ZnnAction/GuangGao.action"><i class="icon icon-signal"></i> <span>广告位管理</span></a> </li>
+        <li> <a href="<%=request.getContextPath()%>/jump/xinwen.action"><i class="icon icon-signal"></i> <span>新闻管理</span></a> </li>
     </ul>
 </div>
 
@@ -179,17 +180,7 @@
                     }}
             },
             {field:'goodsSizeName', title:'规格', width:10},
-            {field:'brandAuditState', title:'品牌状态', width:10,
-                formatter: function(value,row,index){
-                    if(value=="0") {
-                        return "未审核";
-                    }if(value=="2"){
-                        return "审核成功";
-                    }if(value=="1"){
-                        return "驳回";
 
-                    }}
-            },
             {field:'hhh', title:'操作', width:10,
                 formatter:function(value,row,index) {
                     if (row.goodsAuditState == 2) {

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface BusinessOrderService {
 
-    List queryBusinessOrder();
+    List queryBusinessOrder(Integer merchantId);
 
     void updateOrderState(Integer orderId);
 

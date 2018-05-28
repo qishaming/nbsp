@@ -31,7 +31,7 @@ public interface GoodsDao {
 
 
 
-  List queryGoodsPin();
+
 
   void updateGoodsPinSuccess(String hql);
 

@@ -176,13 +176,15 @@
                         location.href="<%=request.getContextPath()%>/index.jsp";
                     }else if(data=="3"){
                         location.href="<%=request.getContextPath()%>/show.jsp";
-                    } else if(data=="usererror"){
-                    alert("账号或密码错误");
-                }else if(data=="passworderror"){
-                    alert("账号或密码错误")
-                }else if(data=="errorcode"){
-                    alert("验证码错误")
-                }
+                    }else if(data=="4"){
+                    location.href="<%=request.getContextPath()%>/index2.jsp";
+                    }else if(data=="usererror"){
+                        alert("账号或密码错误");
+                    }else if(data=="passworderror"){
+                        alert("账号或密码错误")
+                    }else if(data=="errorcode"){
+                        alert("验证码错误")
+                    }
             }
         });
     }
