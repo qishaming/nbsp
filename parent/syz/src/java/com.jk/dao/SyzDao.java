@@ -5,7 +5,6 @@ import com.jk.pojo.*;
 import java.util.List;
 
 public interface SyzDao {
-    void addGoods(Goods goods);
 
     List queryBrand();
 
@@ -27,4 +26,14 @@ public interface SyzDao {
     List queryGoods(Integer merchantId);
 
     void submitgoods(Integer goodsid);
+
+
+    List queryGoodsSize();
+
+    Integer addGoods(Goods goods);
+
+    void delgoodsSzie(Integer goodsid);
+
+    void addgoodsSzie(GoodsAndSize goodsAndSize);
+    
 }

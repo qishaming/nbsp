@@ -23,13 +23,9 @@ public class SyzAction extends BaseAction{
     @Autowired
     private SyzService syzService;
     private Integer goodsid;
-
     private Integer bigTypeid;
     private Integer merchantId;
-
     private Integer smallTypeid;
-
-
     private List list;
     private Goods goods = new  Goods();
     private Brand brand =new Brand();
@@ -40,9 +36,15 @@ public class SyzAction extends BaseAction{
     private File uploadFile;
     private BigType bigtype = new  BigType();
     private SmallType smallType = new  SmallType();
+    private GoodsSzie GoodsSzie = new  GoodsSzie();
+    private GoodsAndSize GoodsAndSize = new  GoodsAndSize();
+    private String goodsSizeId;
+
+
 
     @Action(value="/queryGoods")
     public void queryGoods(){
+
         Merchant= (Merchant) ServletActionContext.getRequest().getSession().getAttribute("merchant");
         list = syzService.queryGoods(Merchant.getMerchantId());
         super.writeJson(list);
@@ -56,9 +58,9 @@ public class SyzAction extends BaseAction{
         super.writeJson(list);
 
     }
-    @Action(value="/querySize")
-    public void querySize(){
-        List<GoodsSzie> list = syzService.querySize();
+    @Action(value="/queryGoodsSize")
+    public void queryGoodsSize(){
+        List list = syzService.queryGoodsSize();
         super.writeJson(list);
 
     }
@@ -75,12 +77,13 @@ public class SyzAction extends BaseAction{
         super.writeJson(list);
 
     }
-
+    //新增商品   + 商品规格中间表
     @Action(value="/addGoods")
     public void addGoods(){
         Merchant= (Merchant) ServletActionContext.getRequest().getSession().getAttribute("merchant");
         goods.setMerchantId(Merchant.getMerchantId());
-        syzService.addGoods(goods);
+        syzService.addGoods(goods,goodsSizeId,GoodsAndSize);
+
         super.writeJson("Success");
      }
     @Action(value="/addBrand")
@@ -111,7 +114,7 @@ public class SyzAction extends BaseAction{
     public void updatedGoods(){
         Merchant= (Merchant) ServletActionContext.getRequest().getSession().getAttribute("merchant");
         goods.setMerchantId(Merchant.getMerchantId());
-        syzService.addGoods(goods);
+        syzService.addGoods(goods,goodsSizeId,GoodsAndSize);
         super.writeJson("Success");
 
     }
@@ -139,20 +142,12 @@ public class SyzAction extends BaseAction{
         }
     }
 
-    public BigType getBigtype() {
-        return bigtype;
+    public Integer getGoodsid() {
+        return goodsid;
     }
 
-    public void setBigtype(BigType bigtype) {
-        this.bigtype = bigtype;
-    }
-
-    public SmallType getSmallType() {
-        return smallType;
-    }
-
-    public void setSmallType(SmallType smallType) {
-        this.smallType = smallType;
+    public void setGoodsid(Integer goodsid) {
+        this.goodsid = goodsid;
     }
 
     public Integer getBigTypeid() {
@@ -163,64 +158,20 @@ public class SyzAction extends BaseAction{
         this.bigTypeid = bigTypeid;
     }
 
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
+    }
+
     public Integer getSmallTypeid() {
         return smallTypeid;
     }
 
     public void setSmallTypeid(Integer smallTypeid) {
         this.smallTypeid = smallTypeid;
-    }
-
-
-
-    public GoodsSzie getSize() {
-        return size;
-    }
-
-    public void setSize(GoodsSzie size) {
-        this.size = size;
-    }
-
-    public Integer getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-
-
-    public String getUploadFileFileName() {
-        return uploadFileFileName;
-    }
-
-    public void setUploadFileFileName(String uploadFileFileName) {
-        this.uploadFileFileName = uploadFileFileName;
-    }
-
-    public File getUploadFile() {
-        return uploadFile;
-    }
-
-    public void setUploadFile(File uploadFile) {
-        this.uploadFile = uploadFile;
-    }
-
-    public Integer getGoodsid() {
-        return goodsid;
-    }
-
-    public void setGoodsid(Integer goodsid) {
-        this.goodsid = goodsid;
     }
 
     public List getList() {
@@ -238,12 +189,13 @@ public class SyzAction extends BaseAction{
     public void setGoods(Goods goods) {
         this.goods = goods;
     }
-    public Integer getMerchantId() {
-        return merchantId;
+
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setMerchantId(Integer merchantId) {
-        this.merchantId = merchantId;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public com.jk.pojo.Merchant getMerchant() {
@@ -254,4 +206,75 @@ public class SyzAction extends BaseAction{
         Merchant = merchant;
     }
 
+    public com.jk.pojo.GoodsSzie getSize() {
+        return size;
+    }
+
+    public void setSize(com.jk.pojo.GoodsSzie size) {
+        this.size = size;
+    }
+
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public String getUploadFileFileName() {
+        return uploadFileFileName;
+    }
+
+    public void setUploadFileFileName(String uploadFileFileName) {
+        this.uploadFileFileName = uploadFileFileName;
+    }
+
+    public File getUploadFile() {
+        return uploadFile;
+    }
+
+    public void setUploadFile(File uploadFile) {
+        this.uploadFile = uploadFile;
+    }
+
+    public BigType getBigtype() {
+        return bigtype;
+    }
+
+    public void setBigtype(BigType bigtype) {
+        this.bigtype = bigtype;
+    }
+
+    public SmallType getSmallType() {
+        return smallType;
+    }
+
+    public void setSmallType(SmallType smallType) {
+        this.smallType = smallType;
+    }
+
+    public com.jk.pojo.GoodsSzie getGoodsSzie() {
+        return GoodsSzie;
+    }
+
+    public void setGoodsSzie(com.jk.pojo.GoodsSzie goodsSzie) {
+        GoodsSzie = goodsSzie;
+    }
+
+    public com.jk.pojo.GoodsAndSize getGoodsAndSize() {
+        return GoodsAndSize;
+    }
+
+    public void setGoodsAndSize(com.jk.pojo.GoodsAndSize goodsAndSize) {
+        GoodsAndSize = goodsAndSize;
+    }
+
+    public String getGoodsSizeId() {
+        return goodsSizeId;
+    }
+
+    public void setGoodsSizeId(String goodsSizeId) {
+        this.goodsSizeId = goodsSizeId;
+    }
 }

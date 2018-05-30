@@ -25,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Namespace(value="/LoginAction")
-@ParentPackage("struts-default")
 public class LoginAction extends BaseAction{
     private static Random dom = new Random();
 
@@ -372,6 +371,7 @@ public class LoginAction extends BaseAction{
             merchant.setMerchantRegisterTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()).toString());
             merchant.setMerchantUpdateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()).toString());
             String ss="";
+            merchant.setMerchantAuditState(0);
             try {
                 loginService.addMerchant(merchant);
                 ss="aa";

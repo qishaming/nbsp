@@ -171,10 +171,13 @@
             success:function(data){
                // idsStr = data.substring(1,data.length-1);
                 if(data=="1") {
+                    alert("登陆成功");
                     location.href = "<%=request.getContextPath()%>/index1.jsp";
                    }else if(data=="2"){
+                        alert("登陆成功");
                         location.href="<%=request.getContextPath()%>/index.jsp";
                     }else if(data=="3"){
+                    alert("登陆成功");
                         location.href="<%=request.getContextPath()%>/show.jsp";
                     }else if(data=="4"){
                     location.href="<%=request.getContextPath()%>/index2.jsp";

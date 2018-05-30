@@ -21,7 +21,7 @@ import java.util.List;
  * @ModificationMistory who    when    what
  */
     @Namespace(value = "/businessOrderAction")
-    @ParentPackage("struts-default")
+    @ParentPackage("basePackage")
 public class BusinessOrderAction extends BaseAction {
 
     @Autowired
@@ -36,6 +36,7 @@ public class BusinessOrderAction extends BaseAction {
        Merchant merchant= (Merchant) ServletActionContext.getRequest().getSession().getAttribute("merchant");
 
         List list = businessOrderService.queryBusinessOrder(merchant.getMerchantId());
+        System.out.println("开始进入super返回前台"+merchant.getMerchantId());
         super.writeJson(list);
     }
 

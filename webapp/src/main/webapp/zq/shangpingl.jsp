@@ -145,10 +145,7 @@
         uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
         columns:[[
             {field:'goodsid', title:'编号', idField:true,  width:10 },
-            {field:'customerName', title:'商家', width:10 },
             {field:'goodsname', title:'商品', width:10 },
-            {field:'goodsSizeName', title:'商品规格', width:10 },
-            {field:'brandName', title:'商品品牌', width:10 },
             {field:'goodsimg', title:'商品图片', width:10,
                 formatter: function(value,row,index){
                     var path ="";
@@ -163,7 +160,6 @@
             },
 
             {field:'goodsPrice', title:'商品价格', width:10 },
-            {field:'goodsDiscounts', title:'商品折扣价', width:10 },
             {field:'goodsAuditState', title:'商品状态', width:10,
                 formatter: function(value,row,index){
                     if(value=="1") {
@@ -179,7 +175,6 @@
 
                     }}
             },
-            {field:'goodsSizeName', title:'规格', width:10},
 
             {field:'hhh', title:'操作', width:10,
                 formatter:function(value,row,index) {

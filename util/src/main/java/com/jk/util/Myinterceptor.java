@@ -10,11 +10,11 @@ public class Myinterceptor extends AbstractInterceptor {
     @Override
     public String intercept(ActionInvocation actionInvocation) throws Exception {
         HttpSession session = ServletActionContext.getRequest().getSession();
-        System.err.println(session.getAttribute("username"));
-        if(session.getAttribute("username")==null||session.getAttribute("username").equals("")){
-            return "login";
+        if(session.getAttribute("user")!=null||!session.getAttribute("user").equals("")){
+            actionInvocation.invoke();
+
         }
-        actionInvocation.invoke();
-        return "";
+        System.out.println("被拦截了");
+        return "login";
     }
 }

@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Namespace(value="/ZnnAction")
-@ParentPackage("struts-default")
+@ParentPackage("basePackage")
 public class ZnnAction extends BaseAction{
 
     @Autowired

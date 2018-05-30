@@ -79,7 +79,6 @@
             <div class="modal-body">
                 <form id="addForm">
 
-
                     <input type='hidden' name='goods.goodsAuditState' value="1"/>
                     <input type='hidden' name='goods.goodsDiscounts' value="0"/><br/>
                     <div class="input-group">
@@ -90,30 +89,29 @@
                         <span class="input-group-addon">价格</span>
                         <input type="text"name='goods.goodsPrice' class="form-control" placeholder="请输入价格">
                     </div>
+
                     <input type="text"name='goods.goodsScript' class="form-control" placeholder="商品介绍">
 
                     <input type="hidden" name="goods.goodsImg" id="photo1"><br>
                     <div id="show1"><img width="70px" height="70px" id="img1"></div>
                     <input type="file" id="topian1">
 
-                    <div class="input-group">
-                        <span class="input-group-addon">大类</span>
+                        大类
                         <select id="bigTypeId"  name='goods.bigTypeId' onchange="querySmallType()"  class="selectpicker" data-live-search="true">   </select>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">小类</span>
-                        <select id ="smallTypeId"name="goods.smallTypeId" class="selectpicker" data-live-search="true">   </select>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">规格</span>
-                        <%-- 多选加 multipley--%>
-                        <select id ="goodsSizeId"name="goods.sizeId" class="selectpicker"  data-live-search="true">   </select>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">品牌</span>
-                        <select id ="brandId"    name="goods.brandId" class="selectpicker"  data-live-search="true">   </select>
-                    </div>
+                        <br>
 
+                        小类
+                        <select id ="smallTypeId"name="goods.smallTypeId" class="selectpicker" data-live-search="true">   </select>
+                         <br>
+
+
+                        品牌
+                        <select id ="brandId"    name="goods.brandId" class="selectpicker"  data-live-search="true">   </select>
+                         <br>
+
+                       添加规格
+                    <span id="goodsSizeId"></span>
+                    <input type="hidden" name='goodsSizeId'>
 
                 </form>
             </div>
@@ -162,17 +160,17 @@
 
                     <div class="input-group">
                         <span class="input-group-addon">大类</span>
-                        <select id="bigTypeId2"  name='goods.bigTypeId'   class="selectpicker" data-live-search="true">   </select>
+                        <select id="bigTypeId2"  name='goods.bigTypeId'  class="selectpicker" data-live-search="true">   </select>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon">小类</span>
                         <select id ="smallTypeId2"name="goods.smallTypeId" class="selectpicker" data-live-search="true">   </select>
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">规格</span>
-                        <%-- 多选加 multipley--%>
-                        <select id ="goodsSizeId2"name="goods.sizeId" class="selectpicker"  data-live-search="true">   </select>
-                    </div>
+
+                        添加规格
+                        <span id="goodsSizeId2"></span>
+                        <input type="hidden" name='goodsSizeId'>
+
                     <div class="input-group">
                         <span class="input-group-addon">品牌</span>
                         <select id ="brandId2"    name="goods.brandId" class="selectpicker"  data-live-search="true">   </select>
@@ -191,6 +189,58 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    //-----------------------------------------规格---------------------------------------------------
+    typeid=$("#typeid").val()
+    $.ajax({
+        url:"<%=request.getContextPath()%>/syz/queryGoodsSize.action",
+        type:"post",
+        data:{typeid:typeid},
+        dataType:"json",
+        async:false,
+        success:function (data){
+            var radioHtml2 = "";
+
+            var size ="";
+            $(data).each(function (){
+                if(size.indexOf(this.goodsSizeName)>0){
+
+                }else{
+                    size =size+"," +this.goodsSizeName;
+                }
+            });
+            var radioHtml = "";
+            var sizes=size.substring(1,size.length) .split(",")
+            for(var i=0;i<sizes.length;i++){
+                $(data).each(function (){
+                    var size=this.size;
+                    var goodsSizeName=this.goodsSizeName;
+                    var goodsSizeId=this.goodsSizeId;
+                    if(sizes[i]==goodsSizeName){
+                        radioHtml += "<input type='checkbox' name='goodsSizeId' value='"+goodsSizeId+"'/>"+size+"&nbsp;&nbsp;";
+                    }
+
+                });
+                if(radioHtml2.indexOf(radioHtml)>0){
+
+                }else{
+                    radioHtml2=radioHtml2+"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+sizes[i]+":"+radioHtml;
+                    radioHtml = "";
+                }
+
+            }
+            $("#goodsSizeId").html(radioHtml2);
+            $("#goodsSizeId2").html(radioHtml2);
+        },
+        error:function (){
+            alert("查询单选出错");
+        }
+    })
+
+</script>
+
 
 
 <%--  hello
@@ -241,7 +291,7 @@
         <li> <a href="<%=request.getContextPath()%>/jump/info.action"><i class="icon icon-signal"></i> <span>信息管理</span></a> </li>
         <li> <a href="<%=request.getContextPath()%>/jump/updatePass.action"><i class="icon icon-signal"></i> <span>修改密码</span></a> </li>
 
-        <li><a href="<%=request.getContextPath()%>/jpl/bb.action"><i class="icon icon-th"></i> <span>数据分析</span></a>
+            <li><a href="<%=request.getContextPath()%>/szh/da.jsp"><i class="icon icon-th"></i> <span>数据分析</span></a>
 
         </li>
             <li> <a href="<%=request.getContextPath()%>/jump/jumpOrder.action"><i class="icon icon-tag"></i> <span>订单详情</span></a> </li>
@@ -266,7 +316,7 @@
                     </div>
 
 
-                    <table class="table" id="xinwen" border="1">
+                    <table class="table" id="xinwen" >
 
                     </table>
                     <div class="widget-content nopadding">
@@ -346,23 +396,7 @@
             alert("程序出错querybrand");
         }
     })
-    $.ajax({
-        url:"<%=request.getContextPath()%>/syz/querySize.action",
-        type:"post",
-        dataType:"json",
-        async:false,
-        success:function (mt){
-            var option = "";
-            $(mt).each(function (){
-                option += "<option value='"+this.goodsSizeId+"'>"+this.goodsSizeName+"</option>";
-            });
-            $('#goodsSizeId').html(option);
-            $('#goodsSizeId2').html(option);
-        },
-        error:function (){
-            alert("程序出错2");
-        }
-    })
+
     function querySmallType(){
         var bigTypeid=$("#bigTypeId").val();
         querySmallType2(bigTypeid)
@@ -396,6 +430,7 @@
     }
     //查询
     $("#xinwen").bootstrapTable({
+        height:900,
         url:"<%=request.getContextPath()%>/syz/queryGoods.action",
         pagination: true,                   //是否显示分页（*）
         sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
@@ -413,15 +448,15 @@
             $('#myModal2').modal();
         },
         columns:[[
-            {field:'goodsid', title:'编号', idField:true,  width:10 },
-            {field:'goodsname', title:'商品名', idField:true,  width:10 },
-            {field:'goodsScript', title:'商品介绍', idField:true,  width:10 },
-            {field:'bigTypeName', title:'商品类型', idField:true,  width:10 },
-            {field:'smallTypeName', title:'商品细分', idField:true,  width:10 },
-            {field:'goodsPrice', title:'原价', idField:true,  width:10 },
-            {field:'brandName', title:'品牌', width:10 },
-            {field:'goodsSizeName', title:'规格', width:10 },
-            {field:'goodsAuditState', title:'操作', width:10,
+            {field:'goodsid', title:'编号', idField:true },
+            {field:'goodsname', title:'商品名', idField:true},
+            {field:'goodsScript', title:'商品介绍', idField:true },
+            {field:'bigTypeName', title:'商品类型', idField:true},
+            {field:'smallTypeName', title:'商品细分', idField:true },
+            {field:'goodsPrice', title:'原价', idField:true },
+            {field:'brandName', title:'品牌'},
+            {field:'goodsSizeName', title:'规格'},
+            {field:'goodsAuditState', title:'操作',
                 formatter:function(value,row,index){
                     if(row.goodsAuditState == 1){
                         return  '未提交';
@@ -436,7 +471,7 @@
                     }
                 }
 
-            },{field:'goodsimg', title:'商品图片', width:10,
+            },{field:'goodsimg', title:'商品图片',
                 formatter: function(value,row,index){
                     var path ="";
 
@@ -447,7 +482,7 @@
                 }
 
 
-            },{field:'hhh', title:'操作', width:20,
+            },{field:'hhh', title:'操作',
                 formatter:function(value,row,index){
                     return  '<button  class="btn btn-primary"  data-toggle="modal" data-target="#myModal1" onclick="updateyy('+row.goodsid+","+row.bigTypeId+')">修改商品</button>' +
                         '<button type="button" class="btn btn-danger"  onclick="delxinwen('+row.goodsid+')" >删除该商品</button>';
@@ -505,6 +540,12 @@
 
 
     function addxinwen(){
+        var Goodsizeid="";
+        $('input:checkbox[name=goodsSizeId]:checked').each(function(k){
+            Goodsizeid +=','+$(this).val();
+        })
+
+        $("[name='goodsAndSize.goodsSizeId']").val(Goodsizeid.substring(1,Goodsizeid.length) );
 
         $.ajax({
             url:"<%=request.getContextPath()%>/syz/addGoods.action",
@@ -512,6 +553,7 @@
             data:$("#addForm").serialize(),
             dataType:"text",
             success:function (addFlag){
+                $("[name='goodsSizeId'] :checkbox").attr("checked", false);
                 $("#xinwen").bootstrapTable('refresh');
 
             },

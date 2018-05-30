@@ -6,7 +6,6 @@ import java.util.List;
 public interface SyzService {
 
 
-    void addGoods(Goods goods);
 
     List queryBrand();
 
@@ -28,4 +27,8 @@ public interface SyzService {
     List queryGoods(Integer merchantId);
 
     void submitgoods(Integer goodsid);
+
+    List queryGoodsSize();
+
+    void addGoods(Goods goods, String goodsSizeId, GoodsAndSize goodsAndSize);
 }

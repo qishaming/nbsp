@@ -41,6 +41,9 @@ public class Goods{
     @Column(name = "tuiJian")
     private Integer tuiJian;
 
+    @Column(name = "xiaoLiang")
+    private Integer xiaoLiang;
+
     public Integer getGoodsId() {
         return goodsId;
     }
@@ -130,6 +133,14 @@ public class Goods{
         this.tuiJian = tuiJian;
     }
 
+    public Integer getXiaoLiang() {
+        return xiaoLiang;
+    }
+
+    public void setXiaoLiang(Integer xiaoLiang) {
+        this.xiaoLiang = xiaoLiang;
+    }
+
     @Override
     public String toString() {
         return "Goods{" +
@@ -144,6 +155,7 @@ public class Goods{
                 ", merchantId=" + merchantId +
                 ", smallTypeId=" + smallTypeId +
                 ", tuiJian=" + tuiJian +
+                ", xiaoLiang=" + xiaoLiang +
                 '}';
     }
 }

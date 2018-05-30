@@ -14,8 +14,21 @@ public class SyzServiceImpl implements SyzService{
     private SyzDao syzDao;
 
 
-    public void addGoods(Goods goods) {
-        syzDao.addGoods(goods);
+    public void addGoods(Goods goods, String goodsSizeId, GoodsAndSize goodsAndSize) {
+
+      Integer goodsid=  syzDao.addGoods(goods);
+
+       syzDao.delgoodsSzie(goodsid);
+        String []array=goodsSizeId.split(",");
+
+        for (int i = 0; i < array.length-1; i++) {
+            GoodsAndSize addsize=new GoodsAndSize();
+            addsize.setSizeId(Integer.parseInt(array[i].trim()));
+            addsize.setGoodsId(goodsid);
+            syzDao.addgoodsSzie(addsize);
+
+        }
+
     }
 
     public List queryBrand() {
@@ -60,10 +73,17 @@ public class SyzServiceImpl implements SyzService{
         return syzDao.queryGoods(merchantId);
     }
 
-    @Override
     public void submitgoods(Integer goodsid) {
 
-      syzDao.submitgoods(goodsid);
+        syzDao.submitgoods(goodsid);
 
     }
+
+    public List queryGoodsSize() {
+       return syzDao.queryGoodsSize();
+    }
+
+
+
+
 }

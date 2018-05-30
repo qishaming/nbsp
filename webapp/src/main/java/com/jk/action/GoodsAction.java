@@ -32,7 +32,7 @@ import java.util.List;
  * Created by Administrator on 2018/5/8.
  */
 @Namespace(value="/goods")
-@ParentPackage("struts-default")
+@ParentPackage("basePackage")
 public class GoodsAction extends BaseAction {
   @Autowired
     private GoodsService goodsService;

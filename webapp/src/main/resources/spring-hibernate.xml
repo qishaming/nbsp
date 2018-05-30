@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+    <!--注解配置组件（代表声明开启注解模式，不加的话三个框架整合的话或许有些问题，或许识别不了标注组件@）-->
+    <context:annotation-config />
+
+	<!--自动扫描 将标注Spring注解的类自动转化Bean -->
+	<context:component-scan base-package="com.jk" />
+	
+	<!-- 加载数据资源属性文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">  
+        <property name="driverClass">  
+            <value>${datasource.driverClassName}</value>  
+        </property>  
+        <property name="jdbcUrl">  
+            <value>${datasource.url}</value>  
+        </property>  
+        <property name="user">  
+            <value>${datasource.username}</value>  
+        </property>  
+        <property name="password">  
+            <value>${datasource.password}</value>  
+        </property>  
+        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->   
+        <property name="acquireIncrement">  
+            <value>${c3p0.acquireIncrement}</value>  
+        </property>  
+        <!--初始化时获取三个连接，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->   
+        <property name="initialPoolSize">  
+            <value>${c3p0.initialPoolSize}</value>  
+        </property>  
+        <property name="minPoolSize">  
+            <value>${c3p0.minPoolSize}</value>  
+        </property>  
+        <property name="maxPoolSize">  
+            <value>${c3p0.maxPoolSize}</value>  
+        </property>  
+        <!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->   
+        <property name="maxIdleTime">  
+            <value>${c3p0.maxIdleTime}</value>  
+        </property>  
+        <!--每60秒检查所有连接池中的空闲连接。Default: 0 -->   
+        <property name="idleConnectionTestPeriod">  
+            <value>${c3p0.idleConnectionTestPeriod}</value>  
+        </property>  
+        <!-- JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。但由于预缓存的statements   
+                            属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。   
+                            如果maxStatements与maxStatementsPerConnection均为0，则缓存被关闭。Default: 0-->   
+        <property name="maxStatements">  
+            <value>${c3p0.maxStatements}</value>  
+        </property>  
+        <!-- c3p0是异步操作的，缓慢的JDBC操作通过帮助进程完成。扩展这些操作可以有效的提升性能 通过  
+                                  多线程实现多个操作同时被执行。Default: 3-->   
+        <property name="numHelperThreads">  
+            <value>${c3p0.numHelperThreads}</value>  
+        </property>  
+    </bean>
+
+    <!-- 配置Hibernate的SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!-- 注入连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 配置Hibernate属性 -->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop><!-- 是否展示SQL -->
+                <prop key="hibernate.hbm2ddl.auto">update</prop><!-- 是否自动创建表结构 -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+            </props>
+        </property>
+        <!-- 扫描并加载注解过的实体类 -->
+        <property name="annotatedClasses">
+            <list>
+                <value>com.jk.pojo.User</value>
+                <value>com.jk.pojo.Goods</value>
+                <value>com.jk.pojo.Brand</value>
+                <value>com.jk.pojo.Customer</value>
+                <value>com.jk.pojo.GoodsSzie</value>
+                <value>com.jk.pojo.SmallType</value>
+                <value>com.jk.pojo.Merchant</value>
+                <value>com.jk.pojo.OrderForm</value>
+                <value>com.jk.pojo.Repertory</value>
+                <value>com.jk.pojo.BigType</value>
+                <value>com.jk.pojo.GuangGao</value>
+                <value>com.jk.pojo.News</value>
+                <value>com.jk.pojo.GoodsAndSize</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 声明式事务管理 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!--注解事务切面 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!-- 拦截器方式配置事物 -->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="test" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="append*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
+            <tx:method name="edit*" propagation="REQUIRED" />
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="repair" propagation="REQUIRED" />
+            <tx:method name="delAndRepair" propagation="REQUIRED" />
+            <tx:method name="get*" propagation="SUPPORTS" />
+            <tx:method name="find*" propagation="SUPPORTS" />
+            <tx:method name="load*" propagation="SUPPORTS" />
+            <tx:method name="search*" propagation="SUPPORTS" />
+            <tx:method name="datagrid*" propagation="SUPPORTS" />
+            <tx:method name="*" propagation="SUPPORTS" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置切面 -->
+    <aop:config>
+        <aop:pointcut id="transactionPointcut" expression="(execution(* com.*.service..*.*(..)))"/>
+        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
+    </aop:config>
+
+    <!-- 	aop简洁版  记录操作信息-->
+
+
+</beans>  

@@ -24,7 +24,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
 
     public List queryGoodss() {
-        String hql="select t1.goodsid as goodsid ,t1.goodsname as goodsname ,t1.goodsimg as goodsimg, t1.goodsPrice as goodsPrice,t1.goodsDiscounts as goodsDiscounts,t1.goodsAuditState as goodsAuditState, t2.brandName as brandName,t2.brandAuditState as brandAuditState,t3.goodsSizeName as goodsSizeName ,t4.customerName as customerName  from  pyg_goods T1  ,pyg_brand T2, pyg_goodssize t3, pyg_merchant t4   where t1.brandId=t2.brandId and    T1.sizeId=t3.goodsSizeId  and  t1.merchantId=t4.merchantId and t1.goodsAuditState in (2,3) ";
+        String hql="SELECT g.*,m. customerName  FROM pyg_goods g,pyg_merchant m WHERE  g.`merchantId`=m.`merchantId` AND g.`goodsAuditState` IN (2,3)";
 
 
 
